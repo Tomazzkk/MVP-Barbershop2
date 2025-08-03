@@ -73,7 +73,7 @@ const Agendamento = () => {
   const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 4));
   const passoAnterior = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  const progress = (step / 4) * 100;
+  const progress = (step / 3) * 100;
 
   const stepTitles = [
     "Serviços",
@@ -141,12 +141,14 @@ const Agendamento = () => {
           <p className="text-muted-foreground">{stepDescriptions[step - 1]}</p>
         </div>
         
-        <div className="mb-8 px-4">
-          <Progress value={progress} className="w-full" />
-          <p className="text-sm text-muted-foreground text-center mt-2">
-            Passo {step} de 4
-          </p>
-        </div>
+        {step <= 3 && (
+          <div className="mb-8 px-4">
+            <Progress value={progress} className="w-full" />
+            <p className="text-sm text-muted-foreground text-center mt-2">
+              Passo {step} de 3
+            </p>
+          </div>
+        )}
 
         <div className="min-h-[400px]">
           <AnimatePresence mode="wait">
