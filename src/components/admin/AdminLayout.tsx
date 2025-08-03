@@ -2,6 +2,7 @@ import React from "react";
 import { AdminSidebar } from "./AdminSidebar";
 import { MadeWithDyad } from "../made-with-dyad";
 import { AdminMobileHeader } from "./AdminMobileHeader";
+import AnimatedIconBackground from "../AnimatedIconBackground";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ interface AdminLayoutProps {
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <AnimatedIconBackground />
       <AdminSidebar />
       <div className="flex flex-col">
         <AdminMobileHeader />
