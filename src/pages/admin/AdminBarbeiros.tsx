@@ -3,12 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { MoreHorizontal } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const AdminBarbeiros = () => {
   const barbeiros = [
-    { id: 1, nome: "João Silva", especialidade: "Corte Clássico" },
-    { id: 2, nome: "Carlos Souza", especialidade: "Barba e Bigode" },
-    { id: 3, nome: "Pedro Martins", especialidade: "Corte Moderno" },
+    { id: 1, nome: "João Silva", especialidade: "Corte Clássico", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS" },
+    { id: 2, nome: "Carlos Souza", especialidade: "Barba e Bigode", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS" },
+    { id: 3, nome: "Pedro Martins", especialidade: "Corte Moderno", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM" },
   ];
 
   return (
@@ -26,6 +27,9 @@ const AdminBarbeiros = () => {
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Foto</span>
+              </TableHead>
               <TableHead>Nome</TableHead>
               <TableHead>Especialidade</TableHead>
               <TableHead>
@@ -36,6 +40,12 @@ const AdminBarbeiros = () => {
           <TableBody>
             {barbeiros.map((barbeiro) => (
               <TableRow key={barbeiro.id}>
+                <TableCell className="hidden sm:table-cell">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={barbeiro.avatarUrl} alt={`Foto de ${barbeiro.nome}`} />
+                    <AvatarFallback>{barbeiro.iniciais}</AvatarFallback>
+                  </Avatar>
+                </TableCell>
                 <TableCell className="font-medium">{barbeiro.nome}</TableCell>
                 <TableCell>{barbeiro.especialidade}</TableCell>
                 <TableCell>
