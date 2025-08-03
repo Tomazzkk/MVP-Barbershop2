@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 const barbeiros = [
   { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", especialidade: "Corte Clássico", experiencia: "Sênior" },
@@ -13,6 +14,7 @@ const Profissionais = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8">
+        <BackButton />
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">Nossos Profissionais</h1>
           <p className="text-muted-foreground">Conheça a equipe que vai cuidar do seu estilo.</p>

@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Award, Gift, Ticket } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 // Mock data
 const userPoints = 125;
@@ -22,6 +23,7 @@ const Pontos = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8 space-y-8">
+        <BackButton />
         <div className="text-center">
           <h1 className="text-3xl font-bold">Programa de Fidelidade</h1>
           <p className="text-muted-foreground">Acumule pontos e troque por recompensas incríveis!</p>

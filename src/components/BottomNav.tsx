@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { Calendar, History, Award, User } from "lucide-react";
+import { Home, Calendar, History, Award, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const navItems = [
+  { href: "/", icon: Home, label: "Início" },
   { href: "/agendamento", icon: Calendar, label: "Agendar" },
   { href: "/historico", icon: History, label: "Histórico" },
   { href: "/pontos", icon: Award, label: "Pontos" },

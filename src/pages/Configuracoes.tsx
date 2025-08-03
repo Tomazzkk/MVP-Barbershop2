@@ -4,11 +4,13 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import AnimatedPage from "@/components/AnimatedPage";
 import { LogOut, Palette } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { BackButton } from "@/components/BackButton";
 
 const Configuracoes = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8 max-w-2xl">
+        <BackButton />
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Configurações</h1>
           <p className="text-muted-foreground">Gerencie suas preferências e sua conta.</p>

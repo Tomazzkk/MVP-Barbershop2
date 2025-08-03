@@ -1,11 +1,13 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Package } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 const Produtos = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8">
+        <BackButton />
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">Produtos</h1>
           <p className="text-muted-foreground">Confira nossa seleção de produtos para cabelo e barba.</p>

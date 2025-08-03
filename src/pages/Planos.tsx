@@ -2,11 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 const Planos = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8">
+        <BackButton />
         <h1 className="text-3xl font-bold mb-6 text-center">Nossos Planos</h1>
         <p className="text-center text-muted-foreground mb-8">Escolha o plano que melhor se adapta a você.</p>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">

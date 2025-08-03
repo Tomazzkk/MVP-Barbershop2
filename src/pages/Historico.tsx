@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useNavigate } from "react-router-dom";
 import { Repeat } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 // Mock data
 const agendamentos = [
@@ -27,6 +28,7 @@ const Historico = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8">
+        <BackButton />
         <h1 className="text-3xl font-bold mb-6">Histórico de Agendamentos</h1>
         <Card>
           <CardHeader>

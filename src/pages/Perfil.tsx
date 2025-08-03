@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { History, Star, Award, Edit } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 const user = {
   name: "Carlos Andrade",
@@ -24,7 +25,8 @@ const recentAppointments = [
 const Perfil = () => {
   return (
     <AnimatedPage>
-      <div className="container mx-auto p-4 md:p-8 space-y-8">
+      <div className="container mx-auto p-4 md:p-8 space-y-6">
+        <BackButton />
         <div className="flex items-center justify-between">
           <h1 className="text-2xl md:text-3xl font-bold">Meu Perfil</h1>
           <Button variant="outline" size="sm">

@@ -6,6 +6,7 @@ import PassoDataHora from "@/components/agendamento/PassoDataHora";
 import PassoResumo from "@/components/agendamento/PassoResumo";
 import { Progress } from "@/components/ui/progress";
 import AnimatedPage from "@/components/AnimatedPage";
+import { BackButton } from "@/components/BackButton";
 
 // Mock Data
 const servicos = [
@@ -55,6 +56,7 @@ const Agendamento = () => {
   return (
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8 max-w-4xl">
+        <BackButton />
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">Faça seu Agendamento</h1>
           <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
