@@ -50,7 +50,15 @@ const NavLink = ({ href, label, children }: { href: string; label:string; childr
 
 export const BottomNav = () => {
   const { pathname } = useLocation();
-  if (pathname.startsWith('/admin') || pathname === '/login') {
+  const hiddenPaths = [
+    '/agendamento',
+    '/produtos',
+    '/profissionais',
+    '/barbearias',
+    '/configuracoes',
+  ];
+
+  if (pathname.startsWith('/admin') || pathname === '/login' || hiddenPaths.some(path => pathname.startsWith(path))) {
     return null;
   }
 
