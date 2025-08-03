@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Scissors, LogIn, User, LayoutDashboard, Calendar, History, Star } from "lucide-react";
+import { Scissors, LogIn, User, LayoutDashboard, Calendar, History, Star, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
@@ -30,6 +30,10 @@ const Header = () => {
           <NavLink to="/historico">
             <History className="h-4 w-4 mr-2" />
             Histórico
+          </NavLink>
+          <NavLink to="/pontos">
+            <Award className="h-4 w-4 mr-2" />
+            Meus Pontos
           </NavLink>
           <NavLink to="/planos">
             <Star className="h-4 w-4 mr-2" />

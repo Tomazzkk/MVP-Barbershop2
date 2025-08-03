@@ -13,7 +13,7 @@ const user = {
   avatarUrl: "https://i.pravatar.cc/150?u=carlosandrade",
   initials: "CA",
   plan: "Premium",
-  points: 7,
+  points: 125,
 };
 
 const recentAppointments = [
@@ -66,10 +66,17 @@ const Perfil = () => {
                 <Award className="h-5 w-5 text-primary" />
                 Programa de Fidelidade
               </CardTitle>
+              <CardDescription>Você faz parte do nosso programa de recompensas!</CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-2">Você tem <strong className="text-primary">{user.points}</strong> pontos.</p>
-              <p>Faltam mais <strong className="text-primary">{10 - user.points}</strong> pontos para seu próximo corte grátis!</p>
+            <CardContent className="space-y-4">
+              <div>
+                <p className="text-sm text-muted-foreground">Saldo atual</p>
+                <p className="text-2xl font-bold text-primary">{user.points} pontos</p>
+              </div>
+              <p className="text-sm text-muted-foreground">Continue agendando para ganhar mais pontos e trocar por recompensas exclusivas.</p>
+              <Button asChild className="w-full">
+                <Link to="/pontos">Ver Recompensas e Histórico</Link>
+              </Button>
             </CardContent>
           </Card>
 

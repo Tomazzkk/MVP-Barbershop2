@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import PassoServico from "@/components/agendamento/PassoServico";
 import PassoBarbeiro from "@/components/agendamento/PassoBarbeiro";
 import PassoDataHora from "@/components/agendamento/PassoDataHora";
@@ -25,11 +26,25 @@ export type Servico = (typeof servicos)[0];
 export type Barbeiro = (typeof barbeiros)[0];
 
 const Agendamento = () => {
+  const location = useLocation();
   const [step, setStep] = useState(1);
   const [servicoSelecionado, setServicoSelecionado] = useState<Servico | null>(null);
   const [barbeiroSelecionado, setBarbeiroSelecionado] = useState<Barbeiro | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState<Date | undefined>(new Date());
   const [horarioSelecionado, setHorarioSelecionado] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (location.state?.servicoId && location.state?.barbeiroId) {
+      const servico = servicos.find(s => s.id === location.state.servicoId);
+      const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
+
+      if (servico) setServicoSelecionado(servico);
+      if (barbeiro) setBarbeiroSelecionado(barbeiro);
+
+      // Pula para a etapa de seleção de data/hora
+      setStep(3);
+    }
+  }, [location.state]);
 
   const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 4));
   const passoAnterior = () => setStep((prev) => Math.max(prev - 1, 1));

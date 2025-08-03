@@ -11,6 +11,7 @@ import Layout from "./components/Layout";
 import Perfil from "./pages/Perfil";
 import Historico from "./pages/Historico";
 import Planos from "./pages/Planos";
+import Pontos from "./pages/Pontos";
 
 // Admin imports
 import AdminLayout from "./components/admin/AdminLayout";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/perfil" element={<Layout><Perfil /></Layout>} />
           <Route path="/historico" element={<Layout><Historico /></Layout>} />
           <Route path="/planos" element={<Layout><Planos /></Layout>} />
+          <Route path="/pontos" element={<Layout><Pontos /></Layout>} />
 
           {/* Admin routes */}
           <Route path="/admin" element={<AdminRoutes />}>
