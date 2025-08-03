@@ -1,5 +1,6 @@
 import { HomeMenuButton } from "@/components/home/HomeMenuButton";
-import { Calendar, ShoppingBag, Users, Store, Settings } from "lucide-react";
+import { Calendar, ShoppingBag, Users, Store, Settings, Instagram } from "lucide-react";
+import { MessageSquare } from "lucide-react"; // Usado para representar o WhatsApp
 
 const menuItems = [
   { to: "/agendamento", icon: Calendar, label: "Agendar" },
@@ -16,16 +17,24 @@ const Index = () => {
          <h1 className="text-3xl font-bold">BarberPro</h1>
          <p className="text-muted-foreground">Selecione uma opção para começar.</p>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        {menuItems.map((item, index) => (
+      <div className="flex flex-col items-center gap-4 w-full max-w-xs mx-auto">
+        {menuItems.map((item) => (
           <HomeMenuButton
             key={item.to}
             to={item.to}
             icon={item.icon}
             label={item.label}
-            className={menuItems.length % 2 !== 0 && index === menuItems.length - 1 ? 'col-span-2' : ''}
+            className="w-full"
           />
         ))}
+      </div>
+      <div className="flex justify-center items-center gap-6 mt-12">
+        <a href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors">
+          <Instagram className="h-8 w-8" />
+        </a>
+        <a href="#" aria-label="WhatsApp" className="text-muted-foreground hover:text-primary transition-colors">
+          <MessageSquare className="h-8 w-8" />
+        </a>
       </div>
     </div>
   );
