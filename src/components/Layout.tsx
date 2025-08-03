@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 import { MadeWithDyad } from "./made-with-dyad";
 import { BottomNav } from "./BottomNav";
 import AnimatedIconBackground from "./AnimatedIconBackground";
@@ -12,7 +11,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col">
       <AnimatedIconBackground />
-      <Header />
       <main className="flex-grow pb-20 md:pb-0" style={{ perspective: "1200px" }}>
         {children}
       </main>
