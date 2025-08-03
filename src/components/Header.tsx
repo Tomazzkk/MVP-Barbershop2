@@ -7,7 +7,7 @@ const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) =>
   const location = useLocation();
   const isActive = location.pathname === to;
   return (
-    <Button variant={isActive ? "secondary" : "ghost"} asChild>
+    <Button variant="ghost" asChild className={cn(isActive && "text-primary bg-card")}>
       <Link to={to}>{children}</Link>
     </Button>
   );
@@ -15,7 +15,7 @@ const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) =>
 
 const Header = () => {
   return (
-    <header className="bg-background border-b sticky top-0 z-50">
+    <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold">
           <Scissors className="h-6 w-6 text-primary" />

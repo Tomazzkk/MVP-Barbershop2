@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-      <Card className="w-full max-w-sm">
+    <div className="flex items-center justify-center min-h-screen bg-background">
+      <Card className="w-full max-w-sm border-border">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
@@ -26,7 +26,7 @@ const Login = () => {
           <Button className="w-full">Entrar</Button>
           <div className="mt-4 text-center text-sm">
             Não tem uma conta?{" "}
-            <Link to="#" className="underline">
+            <Link to="#" className="underline text-primary">
               Cadastre-se
             </Link>
           </div>
