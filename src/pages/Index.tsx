@@ -1,24 +1,31 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Scissors } from "lucide-react";
+import { HomeMenuButton } from "@/components/home/HomeMenuButton";
+import { Calendar, ShoppingBag, Users, Store, Settings } from "lucide-react";
+
+const menuItems = [
+  { to: "/agendamento", icon: Calendar, label: "Agendar" },
+  { to: "/produtos", icon: ShoppingBag, label: "Produtos" },
+  { to: "/profissionais", icon: Users, label: "Profissionais" },
+  { to: "/barbearias", icon: Store, label: "Unidades" },
+  { to: "/configuracoes", icon: Settings, label: "Configurações" },
+];
 
 const Index = () => {
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col items-center justify-center text-center py-16 md:py-24">
-        <Scissors className="h-24 w-24 text-primary mb-4 animate-pulse" />
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Bem-vindo ao BarberPro</h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-          A forma mais inteligente de gerenciar sua barbearia e agendar seus cortes.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button size="lg" asChild>
-            <Link to="/agendamento">Quero agendar um horário</Link>
-          </Button>
-          <Button size="lg" variant="secondary" asChild>
-            <Link to="/admin">Sou dono de barbearia</Link>
-          </Button>
-        </div>
+    <div className="container mx-auto p-4 md:p-6 flex flex-col h-full">
+      <div className="text-center mb-8">
+         <h1 className="text-3xl font-bold">BarberPro</h1>
+         <p className="text-muted-foreground">Selecione uma opção para começar.</p>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        {menuItems.map((item, index) => (
+          <HomeMenuButton
+            key={item.to}
+            to={item.to}
+            icon={item.icon}
+            label={item.label}
+            className={menuItems.length % 2 !== 0 && index === menuItems.length - 1 ? 'col-span-2' : ''}
+          />
+        ))}
       </div>
     </div>
   );

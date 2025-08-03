@@ -12,6 +12,9 @@ import Perfil from "./pages/Perfil";
 import Historico from "./pages/Historico";
 import Planos from "./pages/Planos";
 import Pontos from "./pages/Pontos";
+import Produtos from "./pages/Produtos";
+import Profissionais from "./pages/Profissionais";
+import Barbearias from "./pages/Barbearias";
 
 // Admin imports
 import AdminLayout from "./components/admin/AdminLayout";
@@ -41,9 +44,13 @@ const App = () => (
           <Route path="/" element={<Layout><Index /></Layout>} />
           <Route path="/agendamento" element={<Layout><Agendamento /></Layout>} />
           <Route path="/perfil" element={<Layout><Perfil /></Layout>} />
+          <Route path="/configuracoes" element={<Layout><Perfil /></Layout>} />
           <Route path="/historico" element={<Layout><Historico /></Layout>} />
           <Route path="/planos" element={<Layout><Planos /></Layout>} />
           <Route path="/pontos" element={<Layout><Pontos /></Layout>} />
+          <Route path="/produtos" element={<Layout><Produtos /></Layout>} />
+          <Route path="/profissionais" element={<Layout><Profissionais /></Layout>} />
+          <Route path="/barbearias" element={<Layout><Barbearias /></Layout>} />
 
           {/* Admin routes */}
           <Route path="/admin" element={<AdminRoutes />}>
