@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PassoServico from "@/components/agendamento/PassoServico";
-import PassoBarbeiro from "@/components/agendamento/PassoBarbeiro";
-import PassoDataHora from "@/components/agendamento/PassoDataHora";
+import PassoBarbeiroEHorario from "@/components/agendamento/PassoBarbeiroEHorario";
 import PassoResumo from "@/components/agendamento/PassoResumo";
 import { Progress } from "@/components/ui/progress";
 import AnimatedPage from "@/components/AnimatedPage";
@@ -45,22 +44,23 @@ const Agendamento = () => {
   const [horarioSelecionado, setHorarioSelecionado] = useState<string | null>(null);
 
   useEffect(() => {
-    if (location.state?.servicoId && location.state?.barbeiroId) {
+    if (location.state?.servicoId) {
       const servico = servicos.find(s => s.id === location.state.servicoId);
-      const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
-
       if (servico) setServicosSelecionados([servico]);
-      if (barbeiro) setBarbeiroSelecionado(barbeiro);
 
-      // Pula para a etapa de seleção de data/hora
-      setStep(3);
+      if (location.state.barbeiroId) {
+        const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
+        if (barbeiro) setBarbeiroSelecionado(barbeiro);
+      }
+      
+      setStep(2);
     }
   }, [location.state]);
 
-  const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 4));
+  const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 3));
   const passoAnterior = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  const progress = (step / 4) * 100;
+  const progress = (step / 3) * 100;
 
   return (
     <AnimatedPage>
@@ -82,7 +82,7 @@ const Agendamento = () => {
         
         <div className="mb-8 px-4">
           <Progress value={progress} className="w-full" />
-          <p className="text-sm text-muted-foreground text-center mt-2">Passo {step} de 4</p>
+          <p className="text-sm text-muted-foreground text-center mt-2">Passo {step} de 3</p>
         </div>
 
         <div className="min-h-[400px]">
@@ -95,16 +95,11 @@ const Agendamento = () => {
             />
           )}
           {step === 2 && (
-            <PassoBarbeiro
+            <PassoBarbeiroEHorario
+              servicosSelecionados={servicosSelecionados}
               barbeiros={barbeiros}
               barbeiroSelecionado={barbeiroSelecionado}
               setBarbeiroSelecionado={setBarbeiroSelecionado}
-              proximoPasso={proximoPasso}
-              passoAnterior={passoAnterior}
-            />
-          )}
-          {step === 3 && (
-            <PassoDataHora
               horariosDisponiveis={horariosDisponiveis}
               dataSelecionada={dataSelecionada}
               setDataSelecionada={setDataSelecionada}
@@ -114,7 +109,7 @@ const Agendamento = () => {
               passoAnterior={passoAnterior}
             />
           )}
-          {step === 4 && (
+          {step === 3 && (
             <PassoResumo
               servicos={servicosSelecionados}
               barbeiro={barbeiroSelecionado}
