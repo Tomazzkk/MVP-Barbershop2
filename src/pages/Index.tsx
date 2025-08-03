@@ -17,7 +17,7 @@ const Index = () => {
          <h1 className="text-3xl font-bold">BarberPro</h1>
          <p className="text-muted-foreground">Selecione uma opção para começar.</p>
       </div>
-      <div className="flex flex-col items-center gap-4 w-full max-w-xs mx-auto">
+      <div className="flex flex-col items-center gap-3 w-full max-w-md mx-auto">
         {menuItems.map((item) => (
           <HomeMenuButton
             key={item.to}

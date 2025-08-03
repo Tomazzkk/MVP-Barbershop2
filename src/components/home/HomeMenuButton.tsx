@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
 
 interface HomeMenuButtonProps {
   to: string;
@@ -12,10 +13,13 @@ interface HomeMenuButtonProps {
 export const HomeMenuButton = ({ to, icon: Icon, label, className }: HomeMenuButtonProps) => {
   return (
     <Link to={to} className={cn("block group", className)}>
-      <Card className="h-full bg-card hover:bg-muted active:scale-95 transition-all duration-200 ease-in-out">
-        <CardContent className="flex flex-col items-center justify-center p-6 h-full">
-          <Icon className="h-10 w-10 mb-3 text-primary" />
-          <span className="text-base font-semibold text-center text-card-foreground">{label}</span>
+      <Card className="bg-card hover:bg-muted active:scale-95 transition-all duration-200 ease-in-out">
+        <CardContent className="flex items-center p-3">
+          <div className="flex items-center justify-center h-12 w-12 bg-muted rounded-lg mr-4">
+            <Icon className="h-6 w-6 text-primary" />
+          </div>
+          <span className="text-base font-semibold text-card-foreground flex-1">{label}</span>
+          <ChevronRight className="h-5 w-5 text-muted-foreground" />
         </CardContent>
       </Card>
     </Link>
