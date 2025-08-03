@@ -4,7 +4,11 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider defaultTheme="dark" storageKey="barberpro-theme">
+  <ThemeProvider
+    attribute="class"
+    defaultTheme="dark"
+    storageKey="barberpro-theme"
+  >
     <App />
   </ThemeProvider>
 );
