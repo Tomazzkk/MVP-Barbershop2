@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Scissors, LogIn, User, LayoutDashboard, Calendar, History, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
   const location = useLocation();
@@ -40,6 +41,7 @@ const Header = () => {
           </NavLink>
         </nav>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <NavLink to="/perfil">
             <User className="h-4 w-4 mr-2" />
             Perfil
