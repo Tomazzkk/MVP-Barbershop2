@@ -45,7 +45,7 @@ const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: S
                 </div>
             </div>
             <Button onClick={proximoPasso} className="w-full mt-4 font-beatford" size="lg">
-              Continuar
+              Avançar
             </Button>
           </div>
         </motion.div>
