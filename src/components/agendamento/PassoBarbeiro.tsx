@@ -17,7 +17,7 @@ const PassoBarbeiro = ({ barbeiros, barbeiroSelecionado, setBarbeiroSelecionado,
   return (
     <Card>
       <CardHeader>
-        <CardTitle>2. Escolha o profissional</CardTitle>
+        <CardTitle className="font-beatford">2. Escolha o profissional</CardTitle>
         <CardDescription>Selecione o seu barbeiro de preferência.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -37,16 +37,16 @@ const PassoBarbeiro = ({ barbeiros, barbeiroSelecionado, setBarbeiroSelecionado,
                 <AvatarImage src={barbeiro.avatarUrl} alt={barbeiro.nome} />
                 <AvatarFallback>{barbeiro.iniciais}</AvatarFallback>
               </Avatar>
-              <h3 className="font-semibold mt-2 text-center text-sm">{barbeiro.nome}</h3>
+              <h3 className="font-semibold mt-2 text-center text-sm font-beatford">{barbeiro.nome}</h3>
               <Badge variant="secondary">{barbeiro.experiencia}</Badge>
             </button>
           ))}
         </div>
         <div className="flex justify-between mt-6 gap-4">
-          <Button variant="outline" onClick={passoAnterior} className="w-full md:w-auto">
+          <Button variant="outline" onClick={passoAnterior} className="w-full md:w-auto font-beatford">
             Voltar
           </Button>
-          <Button onClick={proximoPasso} disabled={!barbeiroSelecionado} className="w-full md:w-auto">
+          <Button onClick={proximoPasso} disabled={!barbeiroSelecionado} className="w-full md:w-auto font-beatford">
             Próximo
           </Button>
         </div>

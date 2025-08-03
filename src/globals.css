@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: 'Beatford';
+    src: url('/fonts/Beatford.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   :root {
     --background: 0 0% 98%; /* Off-white #FAFAFA */
     --foreground: 0 0% 3.9%; /* Black */

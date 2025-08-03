@@ -58,7 +58,7 @@ const Produtos = () => {
           </Link>
         </div>
         
-        <h1 className="text-3xl font-bold tracking-tight">Produtos</h1>
+        <h1 className="text-3xl font-bold tracking-tight font-beatford">Produtos</h1>
         <p className="text-muted-foreground mt-1 mb-8">
           Faça o resgate dos produtos usando seus pontos de fidelidade
         </p>
@@ -74,7 +74,7 @@ const Produtos = () => {
                 />
               </div>
               <div className="mt-2 space-y-0.5">
-                <h3 className="font-semibold text-foreground text-base leading-tight">{produto.name}</h3>
+                <h3 className="font-semibold text-foreground text-base leading-tight font-beatford">{produto.name}</h3>
                 <p className="text-sm text-muted-foreground">
                   R$ {produto.price.toFixed(2).replace('.', ',')}
                 </p>

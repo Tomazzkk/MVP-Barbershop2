@@ -9,7 +9,7 @@ interface BackButtonProps {
 
 export const BackButton = ({ className }: BackButtonProps) => {
     return (
-        <Button asChild variant="outline" size="sm" className={cn("mb-6 hidden md:inline-flex", className)}>
+        <Button asChild variant="outline" size="sm" className={cn("mb-6 hidden md:inline-flex font-beatford", className)}>
             <Link to="/">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Voltar ao Início

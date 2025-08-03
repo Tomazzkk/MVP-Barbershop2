@@ -27,7 +27,7 @@ const ProfileMenuItem: React.FC<ProfileMenuItemProps> = ({ icon: Icon, title, su
   <Link to={to} className="flex items-center py-4 rounded-lg group transition-colors">
     <Icon className="h-5 w-5 text-muted-foreground mr-4 flex-shrink-0" />
     <div className="flex-1">
-      <p className="font-medium text-sm">{title}</p>
+      <p className="font-medium text-sm font-beatford">{title}</p>
       <p className="text-xs text-muted-foreground">{subtitle}</p>
     </div>
     <ChevronRight className="h-5 w-5 text-muted-foreground" />
@@ -62,7 +62,7 @@ const Perfil = () => {
             <AvatarFallback>{user.initials}</AvatarFallback>
           </Avatar>
           <div>
-            <h1 className="text-xl font-bold">{user.name}</h1>
+            <h1 className="text-xl font-bold font-beatford">{user.name}</h1>
             <p className="text-muted-foreground">{user.email}</p>
           </div>
         </div>
@@ -72,7 +72,7 @@ const Perfil = () => {
           <div className="flex items-center py-4 rounded-lg group transition-colors">
             <Repeat className="h-5 w-5 text-muted-foreground mr-4 flex-shrink-0" />
             <div className="flex-1">
-              <p className="font-medium text-sm">Alterar Unidade</p>
+              <p className="font-medium text-sm font-beatford">Alterar Unidade</p>
             </div>
             <Switch id="unidade-switch" />
           </div>

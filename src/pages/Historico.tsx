@@ -29,10 +29,10 @@ const Historico = () => {
     <AnimatedPage>
       <div className="container mx-auto p-4 md:p-8">
         <BackButton />
-        <h1 className="text-3xl font-bold mb-6">Histórico de Agendamentos</h1>
+        <h1 className="text-3xl font-bold mb-6 font-beatford">Histórico de Agendamentos</h1>
         <Card>
           <CardHeader>
-            <CardTitle>Meus Agendamentos</CardTitle>
+            <CardTitle className="font-beatford">Meus Agendamentos</CardTitle>
             <CardDescription>Veja seus agendamentos passados e agende novamente com um clique.</CardDescription>
           </CardHeader>
           <CardContent>
@@ -54,7 +54,7 @@ const Historico = () => {
                     <TableCell>{agendamento.data}</TableCell>
                     <TableCell>{agendamento.preco}</TableCell>
                     <TableCell className="text-right">
-                      <Button variant="outline" size="sm" onClick={() => handleCortarNovamente(agendamento)}>
+                      <Button variant="outline" size="sm" onClick={() => handleCortarNovamente(agendamento)} className="font-beatford">
                         <Repeat className="mr-2 h-4 w-4" />
                         Cortar Novamente
                       </Button>

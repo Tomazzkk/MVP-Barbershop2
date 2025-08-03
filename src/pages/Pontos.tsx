@@ -25,13 +25,13 @@ const Pontos = () => {
       <div className="container mx-auto p-4 md:p-8 space-y-8">
         <BackButton />
         <div className="text-center">
-          <h1 className="text-3xl font-bold">Programa de Fidelidade</h1>
+          <h1 className="text-3xl font-bold font-beatford">Programa de Fidelidade</h1>
           <p className="text-muted-foreground">Acumule pontos e troque por recompensas incríveis!</p>
         </div>
 
         <Card className="text-center">
           <CardHeader>
-            <CardTitle>Seu Saldo de Pontos</CardTitle>
+            <CardTitle className="font-beatford">Seu Saldo de Pontos</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-6xl font-bold text-primary">{userPoints}</p>
@@ -42,7 +42,7 @@ const Pontos = () => {
         <div className="grid lg:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
-              <CardTitle>Recompensas Disponíveis</CardTitle>
+              <CardTitle className="font-beatford">Recompensas Disponíveis</CardTitle>
               <CardDescription>Use seus pontos para resgatar prêmios.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -55,7 +55,7 @@ const Pontos = () => {
                       <p className="text-sm text-primary">{reward.cost} pontos</p>
                     </div>
                   </div>
-                  <Button disabled={userPoints < reward.cost}>Resgatar</Button>
+                  <Button disabled={userPoints < reward.cost} className="font-beatford">Resgatar</Button>
                 </div>
               ))}
             </CardContent>
@@ -63,7 +63,7 @@ const Pontos = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Histórico de Pontos</CardTitle>
+              <CardTitle className="font-beatford">Histórico de Pontos</CardTitle>
               <CardDescription>Veja como você ganhou e usou seus pontos.</CardDescription>
             </CardHeader>
             <CardContent>

@@ -5,11 +5,11 @@ import AnimatedPage from "@/components/AnimatedPage";
 const Dashboard = () => {
   return (
     <AnimatedPage>
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-6 font-beatford">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Faturamento Total</CardTitle>
+            <CardTitle className="text-sm font-medium font-beatford">Faturamento Total</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -19,7 +19,7 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Agendamentos</CardTitle>
+            <CardTitle className="text-sm font-medium font-beatford">Agendamentos</CardTitle>
             <CalendarIcon className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -29,7 +29,7 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Novos Clientes</CardTitle>
+            <CardTitle className="text-sm font-medium font-beatford">Novos Clientes</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -39,7 +39,7 @@ const Dashboard = () => {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Serviço Popular</CardTitle>
+            <CardTitle className="text-sm font-medium font-beatford">Serviço Popular</CardTitle>
             <Scissors className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -51,7 +51,7 @@ const Dashboard = () => {
       <div className="mt-8">
         <Card>
           <CardHeader>
-            <CardTitle>Próximos Agendamentos</CardTitle>
+            <CardTitle className="font-beatford">Próximos Agendamentos</CardTitle>
           </CardHeader>
           <CardContent>
             <p>Tabela de próximos agendamentos virá aqui.</p>

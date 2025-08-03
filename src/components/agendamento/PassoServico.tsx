@@ -14,7 +14,7 @@ const PassoServico = ({ servicos, servicoSelecionado, setServicoSelecionado, pro
   return (
     <Card>
       <CardHeader>
-        <CardTitle>1. Escolha o serviço</CardTitle>
+        <CardTitle className="font-beatford">1. Escolha o serviço</CardTitle>
         <CardDescription>Selecione o serviço que você deseja agendar.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -31,7 +31,7 @@ const PassoServico = ({ servicos, servicoSelecionado, setServicoSelecionado, pro
               )}
             >
               <div>
-                <h3 className="font-semibold">{servico.nome}</h3>
+                <h3 className="font-semibold font-beatford">{servico.nome}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{servico.duracao}</p>
               </div>
               <div className="text-right">
@@ -41,7 +41,7 @@ const PassoServico = ({ servicos, servicoSelecionado, setServicoSelecionado, pro
           ))}
         </div>
         <div className="flex justify-end mt-6">
-          <Button onClick={proximoPasso} disabled={!servicoSelecionado} className="w-full md:w-auto">
+          <Button onClick={proximoPasso} disabled={!servicoSelecionado} className="w-full md:w-auto font-beatford">
             Próximo
           </Button>
         </div>

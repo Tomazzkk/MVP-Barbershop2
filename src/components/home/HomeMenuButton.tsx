@@ -24,7 +24,7 @@ export const HomeMenuButton = ({ to, icon: Icon, label, className }: HomeMenuBut
             <div className="flex items-center justify-center h-12 w-12 bg-muted rounded-lg mr-4">
               <Icon className="h-6 w-6 text-primary" />
             </div>
-            <span className="text-base font-semibold text-card-foreground flex-1">{label}</span>
+            <span className="text-base font-semibold text-card-foreground flex-1 font-beatford">{label}</span>
             <ChevronRight className="h-5 w-5 text-muted-foreground" />
           </CardContent>
         </Card>

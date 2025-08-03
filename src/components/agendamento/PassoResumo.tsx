@@ -25,7 +25,7 @@ const PassoResumo = ({ servico, barbeiro, data, horario, passoAnterior }: PassoR
   return (
     <Card>
       <CardHeader>
-        <CardTitle>4. Resumo do Agendamento</CardTitle>
+        <CardTitle className="font-beatford">4. Resumo do Agendamento</CardTitle>
         <CardDescription>Confira os detalhes antes de confirmar.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -53,10 +53,10 @@ const PassoResumo = ({ servico, barbeiro, data, horario, passoAnterior }: PassoR
           <span>R$ {servico?.preco.toFixed(2) || "0.00"}</span>
         </div>
         <div className="flex justify-between mt-6">
-          <Button variant="outline" onClick={passoAnterior}>
+          <Button variant="outline" onClick={passoAnterior} className="font-beatford">
             Voltar
           </Button>
-          <Button onClick={handleConfirmar} size="lg">
+          <Button onClick={handleConfirmar} size="lg" className="font-beatford">
             Confirmar Agendamento
           </Button>
         </div>

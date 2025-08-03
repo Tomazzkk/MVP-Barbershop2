@@ -19,10 +19,10 @@ const AdminBarbeiros = () => {
         <CardHeader>
           <div className="flex justify-between items-center">
             <div>
-              <CardTitle>Gerenciar Barbeiros</CardTitle>
+              <CardTitle className="font-beatford">Gerenciar Barbeiros</CardTitle>
               <CardDescription>Adicione, edite ou remova barbeiros.</CardDescription>
             </div>
-            <Button>Adicionar</Button>
+            <Button className="font-beatford">Adicionar</Button>
           </div>
         </CardHeader>
         <CardContent>

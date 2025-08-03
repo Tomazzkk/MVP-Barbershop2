@@ -16,7 +16,7 @@ const Profissionais = () => {
       <div className="container mx-auto p-4 md:p-8">
         <BackButton />
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold">Nossos Profissionais</h1>
+          <h1 className="text-3xl font-bold font-beatford">Nossos Profissionais</h1>
           <p className="text-muted-foreground">Conheça a equipe que vai cuidar do seu estilo.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -27,7 +27,7 @@ const Profissionais = () => {
                   <AvatarImage src={barbeiro.avatarUrl} alt={barbeiro.nome} />
                   <AvatarFallback>{barbeiro.iniciais}</AvatarFallback>
                 </Avatar>
-                <CardTitle>{barbeiro.nome}</CardTitle>
+                <CardTitle className="font-beatford">{barbeiro.nome}</CardTitle>
                 <CardDescription>{barbeiro.especialidade}</CardDescription>
               </CardHeader>
               <CardContent>

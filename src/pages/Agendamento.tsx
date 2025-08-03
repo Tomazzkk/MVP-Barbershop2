@@ -58,7 +58,7 @@ const Agendamento = () => {
       <div className="container mx-auto p-4 md:p-8 max-w-4xl">
         <BackButton />
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Faça seu Agendamento</h1>
+          <h1 className="text-3xl font-bold mb-2 font-beatford">Faça seu Agendamento</h1>
           <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
         </div>
         

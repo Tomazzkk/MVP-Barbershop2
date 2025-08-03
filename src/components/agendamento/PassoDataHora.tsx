@@ -4,6 +4,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { ptBR } from "date-fns/locale";
 import { Star } from "lucide-react";
 import { useMemo } from "react";
+import { cn } from "@/lib/utils";
 
 interface PassoDataHoraProps {
   horariosDisponiveis: string[];
@@ -35,7 +36,7 @@ const PassoDataHora = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>3. Escolha a data e hora</CardTitle>
+        <CardTitle className="font-beatford">3. Escolha a data e hora</CardTitle>
         <CardDescription>Selecione o melhor dia e horário para você.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -53,7 +54,7 @@ const PassoDataHora = ({
           <div className="space-y-6">
             {sugestoes.length > 0 && (
               <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2 text-primary">
+                <h4 className="font-semibold mb-3 flex items-center gap-2 text-primary font-beatford">
                   <Star className="h-5 w-5" />
                   Recomendado para você
                 </h4>
@@ -62,7 +63,7 @@ const PassoDataHora = ({
                     <Button
                       key={`sugestao-${horario}`}
                       variant={horarioSelecionado === horario ? "default" : "outline"}
-                      className={horarioSelecionado !== horario ? "border-primary text-primary hover:bg-primary/10" : ""}
+                      className={cn("font-beatford", horarioSelecionado !== horario ? "border-primary text-primary hover:bg-primary/10" : "")}
                       onClick={() => setHorarioSelecionado(horario)}
                     >
                       {horario}
@@ -73,13 +74,14 @@ const PassoDataHora = ({
             )}
 
             <div>
-              <h4 className="font-semibold mb-3 text-muted-foreground">Outros horários</h4>
+              <h4 className="font-semibold mb-3 text-muted-foreground font-beatford">Outros horários</h4>
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 content-start">
                 {outrosHorarios.map((horario) => (
                   <Button
                     key={horario}
                     variant={horarioSelecionado === horario ? "default" : "outline"}
                     onClick={() => setHorarioSelecionado(horario)}
+                    className="font-beatford"
                   >
                     {horario}
                   </Button>
@@ -89,10 +91,10 @@ const PassoDataHora = ({
           </div>
         </div>
         <div className="flex justify-between mt-6 gap-4">
-          <Button variant="outline" onClick={passoAnterior} className="w-full md:w-auto">
+          <Button variant="outline" onClick={passoAnterior} className="w-full md:w-auto font-beatford">
             Voltar
           </Button>
-          <Button onClick={proximoPasso} disabled={!dataSelecionada || !horarioSelecionado} className="w-full md:w-auto">
+          <Button onClick={proximoPasso} disabled={!dataSelecionada || !horarioSelecionado} className="w-full md:w-auto font-beatford">
             Próximo
           </Button>
         </div>
