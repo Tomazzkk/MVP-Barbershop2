@@ -27,7 +27,7 @@ const PassoResumo = ({ servicos, barbeiro, data, horario, passoAnterior }: Passo
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-beatford">4. Resumo do Agendamento</CardTitle>
+        <CardTitle className="font-beatford">4. Confirmação</CardTitle>
         <CardDescription>Confira os detalhes antes de confirmar.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -49,7 +49,7 @@ const PassoResumo = ({ servicos, barbeiro, data, horario, passoAnterior }: Passo
         <Separator />
         <div className="flex justify-between items-center">
           <span className="text-muted-foreground">Barbeiro:</span>
-          <strong className="text-right">{barbeiro?.nome || "Nenhum"}</strong>
+          <strong className="text-right">{barbeiro?.nome || "Sem preferência"}</strong>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-muted-foreground">Data:</span>

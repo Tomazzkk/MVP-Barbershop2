@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PassoServico from "@/components/agendamento/PassoServico";
-import PassoBarbeiroEHorario from "@/components/agendamento/PassoBarbeiroEHorario";
+import PassoBarbeiro from "@/components/agendamento/PassoBarbeiro";
+import PassoHorario from "@/components/agendamento/PassoHorario";
 import PassoResumo from "@/components/agendamento/PassoResumo";
 import { Progress } from "@/components/ui/progress";
 import { BackButton } from "@/components/BackButton";
@@ -63,17 +64,34 @@ const Agendamento = () => {
 
       if (location.state.barbeiroId) {
         const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
-        if (barbeiro) setBarbeiroSelecionado(barbeiro);
+        if (barbeiro) {
+          setBarbeiroSelecionado(barbeiro);
+          setStep(3); // Pula para a seleção de horário
+        }
+      } else {
+        setStep(2); // Pula para a seleção de barbeiro
       }
-      
-      setStep(2);
     }
   }, [location.state]);
 
-  const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 3));
+  const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 4));
   const passoAnterior = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  const progress = (step / 3) * 100;
+  const progress = (step / 4) * 100;
+
+  const stepTitles = [
+    "Serviços",
+    "Escolha o Barbeiro",
+    "Escolha a Data e Hora",
+    "Confirme seu Agendamento"
+  ];
+
+  const stepDescriptions = [
+    "Garanta seu desconto em combos com 2 ou mais serviços.",
+    "Selecione seu profissional de preferência.",
+    "Escolha o melhor dia e horário para você.",
+    "Revise os detalhes e confirme seu horário."
+  ];
 
   const renderStep = () => {
     switch (step) {
@@ -87,11 +105,18 @@ const Agendamento = () => {
         );
       case 2:
         return (
-          <PassoBarbeiroEHorario
+          <PassoBarbeiro
             servicosSelecionados={servicosSelecionados}
             barbeiros={barbeiros}
             barbeiroSelecionado={barbeiroSelecionado}
             setBarbeiroSelecionado={setBarbeiroSelecionado}
+            proximoPasso={proximoPasso}
+            passoAnterior={passoAnterior}
+          />
+        );
+      case 3:
+        return (
+          <PassoHorario
             horariosDisponiveis={horariosDisponiveis}
             dataSelecionada={dataSelecionada}
             setDataSelecionada={setDataSelecionada}
@@ -101,7 +126,7 @@ const Agendamento = () => {
             passoAnterior={passoAnterior}
           />
         );
-      case 3:
+      case 4:
         return (
           <PassoResumo
             servicos={servicosSelecionados}
@@ -121,22 +146,13 @@ const Agendamento = () => {
       <div className="container mx-auto p-4 md:p-8 max-w-4xl">
         <BackButton />
         <div className="text-center mb-8">
-          {step === 1 ? (
-            <>
-              <h1 className="text-3xl font-bold mb-2 font-beatford">Serviços</h1>
-              <p className="text-muted-foreground">Garanta seu desconto em combos com 2 ou mais serviços.</p>
-            </>
-          ) : (
-            <>
-              <h1 className="text-3xl font-bold mb-2 font-beatford">Faça seu Agendamento</h1>
-              <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
-            </>
-          )}
+          <h1 className="text-3xl font-bold mb-2 font-beatford">{stepTitles[step - 1]}</h1>
+          <p className="text-muted-foreground">{stepDescriptions[step - 1]}</p>
         </div>
         
         <div className="mb-8 px-4">
           <Progress value={progress} className="w-full" />
-          <p className="text-sm text-muted-foreground text-center mt-2">Passo {step} de 3</p>
+          <p className="text-sm text-muted-foreground text-center mt-2">Passo {step} de 4</p>
         </div>
 
         <div className="min-h-[400px]">
