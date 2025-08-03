@@ -2,6 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Home, Calendar, History, Award, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import React from "react";
 
 const navItems = [
   { href: "/", icon: Home, label: "Início" },
@@ -11,7 +13,13 @@ const navItems = [
   { href: "/perfil", icon: User, label: "Perfil" },
 ];
 
-const NavLink = ({ href, icon: Icon, label }: { href: string; icon: React.ElementType; label: string }) => {
+// Mock user data for avatar. In a real app, this would come from auth context.
+const user = {
+  avatarUrl: "https://i.pravatar.cc/150?u=primeappbarber",
+  initials: "PA",
+};
+
+const NavLink = ({ href, label, children }: { href: string; label:string; children: React.ReactNode }) => {
   const { pathname } = useLocation();
   const isActive = pathname === href;
 
@@ -33,14 +41,15 @@ const NavLink = ({ href, icon: Icon, label }: { href: string; icon: React.Elemen
           transition={{ duration: 0.3 }}
         />
       )}
-      <Icon className="h-6 w-6" />
+      <div className={cn("h-6 w-6 flex items-center justify-center transition-transform", isActive && "scale-110")}>
+        {children}
+      </div>
       <span className="text-xs font-medium">{label}</span>
     </Link>
   );
 };
 
 export const BottomNav = () => {
-  // A navegação some em telas maiores (md:hidden)
   const { pathname } = useLocation();
   if (pathname.startsWith('/admin') || pathname === '/login') {
     return null;
@@ -49,9 +58,21 @@ export const BottomNav = () => {
   return (
     <nav className="fixed bottom-0 left-0 right-0 h-16 bg-background border-t border-border z-50 md:hidden">
       <div className="flex justify-around items-center h-full max-w-md mx-auto">
-        {navItems.map((item) => (
-          <NavLink key={item.href} href={item.href} icon={item.icon} label={item.label} />
-        ))}
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <NavLink key={item.href} href={item.href} label={item.label}>
+              {item.href === "/perfil" ? (
+                <Avatar className="h-full w-full">
+                  <AvatarImage src={user.avatarUrl} alt="User avatar" />
+                  <AvatarFallback>{user.initials}</AvatarFallback>
+                </Avatar>
+              ) : (
+                <Icon className="h-full w-full" />
+              )}
+            </NavLink>
+          );
+        })}
       </div>
     </nav>
   );

@@ -1,120 +1,90 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { History, Star, Award, Edit } from "lucide-react";
-import { Link } from "react-router-dom";
 import AnimatedPage from "@/components/AnimatedPage";
-import { BackButton } from "@/components/BackButton";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import { 
+  User, 
+  MapPin, 
+  Lock, 
+  History, 
+  Receipt, 
+  Bell, 
+  Star, 
+  ChevronRight,
+  Repeat
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import React from "react";
 
-const user = {
-  name: "Carlos Andrade",
-  email: "carlos.andrade@example.com",
-  avatarUrl: "https://i.pravatar.cc/150?u=carlosandrade",
-  initials: "CA",
-  plan: "Premium",
-  points: 125,
-};
+interface ProfileMenuItemProps {
+  icon: React.ElementType;
+  title: string;
+  subtitle: string;
+  to?: string;
+}
 
-const recentAppointments = [
-  { id: 1, service: "Combo (Cabelo + Barba)", date: "15 de Julho, 2024", barber: "João Silva", evaluated: false },
-  { id: 2, service: "Corte de Cabelo", date: "20 de Junho, 2024", barber: "Pedro Martins", evaluated: true },
-];
+const ProfileMenuItem: React.FC<ProfileMenuItemProps> = ({ icon: Icon, title, subtitle, to = "#" }) => (
+  <Link to={to} className="flex items-center py-4 rounded-lg group transition-colors">
+    <Icon className="h-5 w-5 text-muted-foreground mr-4 flex-shrink-0" />
+    <div className="flex-1">
+      <p className="font-medium text-sm">{title}</p>
+      <p className="text-xs text-muted-foreground">{subtitle}</p>
+    </div>
+    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+  </Link>
+);
 
 const Perfil = () => {
+  const user = {
+    name: "Prime appbarber",
+    email: "prime@starapp.com.br",
+    avatarUrl: "https://i.pravatar.cc/150?u=primeappbarber",
+    initials: "PA",
+  };
+
+  const menuItems: ProfileMenuItemProps[] = [
+    { icon: User, title: "Meus Dados", subtitle: "Altere as informações do seu perfil" },
+    { icon: MapPin, title: "Endereço", subtitle: "Altere seu endereço" },
+    { icon: Lock, title: "Segurança", subtitle: "Altere sua senha de acesso" },
+    { icon: History, title: "Histórico", subtitle: "Visualize seu histórico de agendamentos", to: "/historico" },
+    { icon: Receipt, title: "Despesas", subtitle: "Acompanhe seus gastos" },
+    { icon: Bell, title: "Notificações", subtitle: "Autorize as notificações em seu dispositivo" },
+    { icon: Star, title: "Avaliar", subtitle: "Avalie nosso aplicativo na loja" },
+  ];
+
   return (
     <AnimatedPage>
-      <div className="container mx-auto p-4 md:p-8 space-y-6">
-        <BackButton />
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl md:text-3xl font-bold">Meu Perfil</h1>
-          <Button variant="outline" size="sm">
-            <Edit className="mr-2 h-4 w-4" />
-            Editar
-          </Button>
+      <div className="container mx-auto p-4 md:p-8 max-w-lg">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-6">
+          <Avatar className="h-16 w-16">
+            <AvatarImage src={user.avatarUrl} alt={user.name} />
+            <AvatarFallback>{user.initials}</AvatarFallback>
+          </Avatar>
+          <div>
+            <h1 className="text-xl font-bold">{user.name}</h1>
+            <p className="text-muted-foreground">{user.email}</p>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 space-y-8">
-            <Card className="self-start">
-              <CardHeader className="items-center text-center">
-                <Avatar className="h-24 w-24 mb-4">
-                  <AvatarImage src={user.avatarUrl} alt={user.name} />
-                  <AvatarFallback>{user.initials}</AvatarFallback>
-                </Avatar>
-                <CardTitle className="text-2xl">{user.name}</CardTitle>
-                <CardDescription>{user.email}</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                  <CardTitle className="text-lg">Plano Atual</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center space-y-4">
-                  <Badge variant={user.plan === 'Premium' ? 'default' : 'secondary'} className="text-lg py-1 px-4">{user.plan}</Badge>
-                  <Button asChild className="w-full">
-                      <Link to="/planos">Gerenciar Assinatura</Link>
-                  </Button>
-              </CardContent>
-            </Card>
+        {/* Menu */}
+        <div className="flex flex-col">
+          <div className="flex items-center py-4 rounded-lg group transition-colors">
+            <Repeat className="h-5 w-5 text-muted-foreground mr-4 flex-shrink-0" />
+            <div className="flex-1">
+              <p className="font-medium text-sm">Alterar Unidade</p>
+            </div>
+            <Switch id="unidade-switch" />
           </div>
+          
+          <Separator />
 
-          <div className="lg:col-span-2 space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Award className="h-5 w-5 text-primary" />
-                  Programa de Fidelidade
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <p className="text-sm text-muted-foreground">Saldo atual</p>
-                  <p className="text-2xl font-bold text-primary">{user.points} pontos</p>
-                </div>
-                <Button asChild className="w-full">
-                  <Link to="/pontos">Ver Recompensas e Histórico</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <History className="h-5 w-5 text-primary" />
-                  Histórico Recente
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-4">
-                  {recentAppointments.map(appt => (
-                    <li key={appt.id} className="flex flex-wrap items-center justify-between gap-2">
-                      <div>
-                        <p className="font-semibold">{appt.service}</p>
-                        <p className="text-sm text-muted-foreground">{appt.date} com {appt.barber}</p>
-                      </div>
-                      {appt.evaluated ? (
-                        <div className="flex items-center gap-1 text-sm text-yellow-500">
-                          <Star className="h-4 w-4 fill-current" />
-                          <span>Avaliado</span>
-                        </div>
-                      ) : (
-                        <Button variant="outline" size="sm">
-                          <Star className="mr-2 h-4 w-4" />
-                          Avaliar
-                        </Button>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-                <Separator className="my-4" />
-                <Button variant="link" asChild className="p-0 h-auto">
-                  <Link to="/historico">Ver todo o histórico</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+          {menuItems.map((item, index) => (
+            <React.Fragment key={item.title}>
+              <ProfileMenuItem {...item} />
+              {index < menuItems.length - 1 && <Separator />}
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </AnimatedPage>
