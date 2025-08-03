@@ -7,11 +7,11 @@ const icons = [Scissors, Brush, Wind, Star];
 
 const createFloatVariants = () => ({
   animate: {
-    x: [0, Math.random() * 10 - 5, Math.random() * 10 - 5, 0],
-    y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0],
-    rotate: [0, Math.random() * 10 - 5, Math.random() * 10 - 5, 0],
+    x: [0, Math.random() * 8 - 4, Math.random() * 8 - 4, 0],
+    y: [0, Math.random() * 10 - 5, Math.random() * 10 - 5, 0],
+    rotate: [0, Math.random() * 6 - 3, Math.random() * 6 - 3, 0],
     transition: {
-      duration: 15 + Math.random() * 10,
+      duration: 20 + Math.random() * 15,
       repeat: Infinity,
       repeatType: 'mirror',
       ease: 'easeInOut',
@@ -49,7 +49,7 @@ const AnimatedIconBackground = () => {
             variants={variants}
             animate="animate"
           >
-            <Icon className="w-10 h-10 text-foreground opacity-[0.08] dark:opacity-[0.04]" />
+            <Icon className="w-6 h-6 text-foreground opacity-[0.08] dark:opacity-[0.04]" />
           </motion.div>
         ))}
       </div>
