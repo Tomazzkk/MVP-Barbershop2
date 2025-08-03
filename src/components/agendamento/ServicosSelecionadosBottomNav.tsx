@@ -21,7 +21,7 @@ const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: S
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg z-50"
+          className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg z-[51]"
         >
           <div className="container mx-auto max-w-4xl p-4">
             <h3 className="font-semibold mb-2 font-beatford">Serviços selecionados</h3>
