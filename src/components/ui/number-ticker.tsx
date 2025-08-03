@@ -37,12 +37,16 @@ export const NumberTicker = ({
     () =>
       springValue.on("change", (latest) => {
         if (ref.current) {
-          ref.current.textContent = Intl.NumberFormat("pt-BR").format(
-            latest.toFixed(0),
-          );
+          if (Number.isInteger(value)) {
+            ref.current.textContent = Intl.NumberFormat("pt-BR").format(
+              latest.toFixed(0),
+            );
+          } else {
+            ref.current.textContent = latest.toFixed(2).replace(".", ",");
+          }
         }
       }),
-    [springValue],
+    [springValue, value],
   );
 
   return (

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Servico } from "@/pages/Agendamento";
 import { motion, AnimatePresence } from "framer-motion";
 import { Separator } from "../ui/separator";
+import { NumberTicker } from "../ui/number-ticker";
 
 interface ServicosSelecionadosBottomNavProps {
   servicosSelecionados: Servico[];
@@ -41,7 +42,7 @@ const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: S
                 </div>
                 <div className="flex justify-between font-bold text-base">
                     <span>Total</span>
-                    <span>R$ {finalTotal.toFixed(2).replace('.', ',')}</span>
+                    <span>R$ <NumberTicker value={finalTotal} /></span>
                 </div>
             </div>
             <Button onClick={proximoPasso} className="w-full mt-4 font-beatford" size="lg">

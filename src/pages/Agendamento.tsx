@@ -8,7 +8,6 @@ import { Progress } from "@/components/ui/progress";
 import { BackButton } from "@/components/BackButton";
 import ServicosSelecionadosBottomNav from "@/components/agendamento/ServicosSelecionadosBottomNav";
 import { motion, AnimatePresence } from "framer-motion";
-import { NumberTicker } from "@/components/ui/number-ticker";
 
 // Mock Data
 const servicos = [
@@ -145,7 +144,7 @@ const Agendamento = () => {
         <div className="mb-8 px-4">
           <Progress value={progress} className="w-full" />
           <p className="text-sm text-muted-foreground text-center mt-2">
-            Passo <NumberTicker value={step} /> de 4
+            Passo {step} de 4
           </p>
         </div>
 
