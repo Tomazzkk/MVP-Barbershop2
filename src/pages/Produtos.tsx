@@ -2,49 +2,49 @@ import AnimatedPage from "@/components/AnimatedPage";
 import { Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 
-// Mock data based on the screenshot
+// Mock data based on the screenshot with generic images
 const produtos = [
   {
     id: 1,
     name: "Pomada Brilho",
     price: 90.00,
     points: 550,
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://picsum.photos/seed/pomada-brilho/400/400",
   },
   {
     id: 2,
     name: "Pomada efeito mate",
     price: 90.00,
     points: 550,
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://picsum.photos/seed/pomada-mate/400/400",
   },
   {
     id: 3,
     name: "Balm para barba",
     price: 90.00,
     points: 550,
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://picsum.photos/seed/balm-barba/400/400",
   },
   {
     id: 4,
     name: "Óleo para barba",
     price: 70.00,
     points: 470,
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://picsum.photos/seed/oleo-barba/400/400",
   },
   {
     id: 5,
     name: "Old School Grooming",
     price: 85.00,
     points: 520,
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://picsum.photos/seed/old-school/400/400",
   },
   {
     id: 6,
     name: "Shampoo Refresh",
     price: 75.00,
     points: 480,
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://picsum.photos/seed/shampoo-refresh/400/400",
   },
 ];
 
@@ -70,7 +70,7 @@ const Produtos = () => {
                 <img
                   src={produto.imageUrl}
                   alt={produto.name}
-                  className="h-full w-full object-contain object-center p-4"
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="mt-2 space-y-0.5">
