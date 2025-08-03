@@ -1,6 +1,5 @@
-import { Barbeiro, Servico } from "@/pages/Agendamento";
+import { Barbeiro } from "@/pages/Agendamento";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "lucide-react";
@@ -9,7 +8,6 @@ import { addDays, format, isSameDay } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 interface PassoBarbeiroEHorarioProps {
-  servicosSelecionados: Servico[];
   barbeiros: Barbeiro[];
   barbeiroSelecionado: Barbeiro | null;
   setBarbeiroSelecionado: (barbeiro: Barbeiro | null) => void;
@@ -23,7 +21,6 @@ interface PassoBarbeiroEHorarioProps {
 }
 
 const PassoBarbeiroEHorario = ({
-  servicosSelecionados,
   barbeiros,
   barbeiroSelecionado,
   setBarbeiroSelecionado,
@@ -35,8 +32,6 @@ const PassoBarbeiroEHorario = ({
   proximoPasso,
   passoAnterior,
 }: PassoBarbeiroEHorarioProps) => {
-  const totalPreco = useMemo(() => servicosSelecionados.reduce((total, servico) => total + servico.preco, 0), [servicosSelecionados]);
-
   const barbeirosComSemPreferencia = useMemo(() => [
     { id: "qualquer", nome: "Sem preferência", avatarUrl: "", iniciais: "??", experiencia: "", disponibilidade: "" },
     ...barbeiros
@@ -67,24 +62,6 @@ const PassoBarbeiroEHorario = ({
 
   return (
     <div className="space-y-8">
-      {/* Resumo dos Serviços */}
-      <div>
-        <h3 className="text-lg font-semibold font-beatford mb-2">Serviços Selecionados</h3>
-        <div className="p-4 border rounded-lg bg-muted/50">
-          {servicosSelecionados.map(servico => (
-            <div key={servico.id} className="flex justify-between items-center text-sm">
-              <span>{servico.nome}</span>
-              <span className="font-medium">R$ {servico.preco.toFixed(2)}</span>
-            </div>
-          ))}
-          <Separator className="my-2" />
-          <div className="flex justify-between items-center font-bold">
-            <span>Total</span>
-            <span>R$ {totalPreco.toFixed(2)}</span>
-          </div>
-        </div>
-      </div>
-
       {/* Seleção de Barbeiro */}
       <div>
         <h3 className="text-lg font-semibold font-beatford mb-3">Profissional</h3>

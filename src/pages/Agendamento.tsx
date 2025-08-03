@@ -102,7 +102,6 @@ const Agendamento = () => {
       case 2:
         return (
           <PassoBarbeiroEHorario
-            servicosSelecionados={servicosSelecionados}
             barbeiros={barbeiros}
             barbeiroSelecionado={barbeiroSelecionado}
             setBarbeiroSelecionado={setBarbeiroSelecionado}
