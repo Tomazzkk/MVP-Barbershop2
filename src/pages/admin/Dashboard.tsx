@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Users, Calendar as CalendarIcon, Scissors } from "lucide-react";
 
-const AdminDashboard = () => {
+const Dashboard = () => {
   return (
-    <div className="container mx-auto p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-6">Dashboard do Administrador</h1>
+    <>
+      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -57,8 +57,8 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </>
   );
 };
 
-export default AdminDashboard;
+export default Dashboard;
