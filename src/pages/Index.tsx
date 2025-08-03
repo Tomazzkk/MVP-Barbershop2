@@ -2,6 +2,7 @@ import { HomeMenuButton } from "@/components/home/HomeMenuButton";
 import { Calendar, ShoppingBag, Users, Store, Settings, Instagram } from "lucide-react";
 import { MessageSquare } from "lucide-react"; // Usado para representar o WhatsApp
 import AnimatedPage from "@/components/AnimatedPage";
+import NossosServicos from "@/components/home/NossosServicos";
 
 const menuItems = [
   { to: "/agendamento", icon: Calendar, label: "Agendar" },
@@ -14,7 +15,8 @@ const menuItems = [
 const Index = () => {
   return (
     <AnimatedPage>
-      <div className="container mx-auto p-4 md:p-6 flex flex-col h-full">
+      {/* Hero/Menu Section */}
+      <section className="container mx-auto p-4 md:p-6 flex flex-col min-h-[80vh] justify-center">
         <div className="text-center pt-8">
           <img src="/placeholder.svg" alt="BarberPro Logo" className="w-32 h-auto mx-auto mb-2" />
           <p className="text-muted-foreground">Selecione uma opção para começar.</p>
@@ -40,7 +42,10 @@ const Index = () => {
             <MessageSquare className="h-8 w-8" />
           </a>
         </div>
-      </div>
+      </section>
+      
+      {/* Services Section */}
+      <NossosServicos />
     </AnimatedPage>
   );
 };
