@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Servico } from "@/pages/Agendamento";
+import ServicosSelecionadosBottomNav from "./ServicosSelecionadosBottomNav";
 
 interface PassoServicoProps {
   servicos: Servico[];
@@ -20,8 +21,8 @@ const PassoServico = ({ servicos, servicosSelecionados, setServicosSelecionados,
   };
 
   return (
-    <div>
-      <div className="space-y-6">
+    <div className="relative">
+      <div className="space-y-6 pb-56">
         {servicos.map((servico, index) => {
           const isSelected = servicosSelecionados.some(s => s.id === servico.id);
           return (
@@ -50,11 +51,10 @@ const PassoServico = ({ servicos, servicosSelecionados, setServicosSelecionados,
         })}
       </div>
 
-      <div className="flex justify-end mt-6">
-        <Button onClick={proximoPasso} disabled={servicosSelecionados.length === 0} className="w-full md:w-auto font-beatford" size="lg">
-          Próximo
-        </Button>
-      </div>
+      <ServicosSelecionadosBottomNav 
+        servicosSelecionados={servicosSelecionados}
+        proximoPasso={proximoPasso}
+      />
     </div>
   );
 };
