@@ -4,8 +4,9 @@ import PassoServico from "@/components/agendamento/PassoServico";
 import PassoBarbeiroEHorario from "@/components/agendamento/PassoBarbeiroEHorario";
 import PassoResumo from "@/components/agendamento/PassoResumo";
 import { Progress } from "@/components/ui/progress";
-import AnimatedPage from "@/components/AnimatedPage";
 import { BackButton } from "@/components/BackButton";
+import ServicosSelecionadosBottomNav from "@/components/agendamento/ServicosSelecionadosBottomNav";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Mock Data
 const servicos = [
@@ -35,6 +36,18 @@ const horariosDisponiveis = ["09:00", "09:30", "10:00", "10:30", "11:00", "14:00
 export type Servico = (typeof servicos)[0];
 export type Barbeiro = (typeof barbeiros)[0];
 
+const pageVariants = {
+  initial: { opacity: 0, x: 20 },
+  in: { opacity: 1, x: 0 },
+  out: { opacity: 0, x: -20 },
+};
+
+const pageTransition = {
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.5,
+};
+
 const Agendamento = () => {
   const location = useLocation();
   const [step, setStep] = useState(1);
@@ -62,8 +75,49 @@ const Agendamento = () => {
 
   const progress = (step / 3) * 100;
 
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <PassoServico
+            servicos={servicos}
+            servicosSelecionados={servicosSelecionados}
+            setServicosSelecionados={setServicosSelecionados}
+          />
+        );
+      case 2:
+        return (
+          <PassoBarbeiroEHorario
+            servicosSelecionados={servicosSelecionados}
+            barbeiros={barbeiros}
+            barbeiroSelecionado={barbeiroSelecionado}
+            setBarbeiroSelecionado={setBarbeiroSelecionado}
+            horariosDisponiveis={horariosDisponiveis}
+            dataSelecionada={dataSelecionada}
+            setDataSelecionada={setDataSelecionada}
+            horarioSelecionado={horarioSelecionado}
+            setHorarioSelecionado={setHorarioSelecionado}
+            proximoPasso={proximoPasso}
+            passoAnterior={passoAnterior}
+          />
+        );
+      case 3:
+        return (
+          <PassoResumo
+            servicos={servicosSelecionados}
+            barbeiro={barbeiroSelecionado}
+            data={dataSelecionada}
+            horario={horarioSelecionado}
+            passoAnterior={passoAnterior}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
-    <AnimatedPage>
+    <>
       <div className="container mx-auto p-4 md:p-8 max-w-4xl">
         <BackButton />
         <div className="text-center mb-8">
@@ -86,41 +140,27 @@ const Agendamento = () => {
         </div>
 
         <div className="min-h-[400px]">
-          {step === 1 && (
-            <PassoServico
-              servicos={servicos}
-              servicosSelecionados={servicosSelecionados}
-              setServicosSelecionados={setServicosSelecionados}
-              proximoPasso={proximoPasso}
-            />
-          )}
-          {step === 2 && (
-            <PassoBarbeiroEHorario
-              servicosSelecionados={servicosSelecionados}
-              barbeiros={barbeiros}
-              barbeiroSelecionado={barbeiroSelecionado}
-              setBarbeiroSelecionado={setBarbeiroSelecionado}
-              horariosDisponiveis={horariosDisponiveis}
-              dataSelecionada={dataSelecionada}
-              setDataSelecionada={setDataSelecionada}
-              horarioSelecionado={horarioSelecionado}
-              setHorarioSelecionado={setHorarioSelecionado}
-              proximoPasso={proximoPasso}
-              passoAnterior={passoAnterior}
-            />
-          )}
-          {step === 3 && (
-            <PassoResumo
-              servicos={servicosSelecionados}
-              barbeiro={barbeiroSelecionado}
-              data={dataSelecionada}
-              horario={horarioSelecionado}
-              passoAnterior={passoAnterior}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              variants={pageVariants}
+              initial="initial"
+              animate="in"
+              exit="out"
+              transition={pageTransition}
+            >
+              {renderStep()}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
-    </AnimatedPage>
+      {step === 1 && (
+        <ServicosSelecionadosBottomNav 
+          servicosSelecionados={servicosSelecionados}
+          proximoPasso={proximoPasso}
+        />
+      )}
+    </>
   );
 };
 
