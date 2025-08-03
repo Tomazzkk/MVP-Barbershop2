@@ -15,10 +15,7 @@ interface PassoDataHoraProps {
   passoAnterior: () => void;
 }
 
-// Mock da lógica de IA para sugestão de horários
 const getSugestoes = (horarios: string[]): string[] => {
-  // Em uma aplicação real, isso usaria o histórico do cliente, a preferência do barbeiro e dados de horários de pico.
-  // Por enquanto, vamos sugerir os 2 primeiros horários disponíveis que não sejam em horário de almoço.
   const nonPeak = horarios.filter(h => !h.startsWith("12:") && !h.startsWith("13:"));
   return nonPeak.slice(0, 2);
 };
@@ -39,10 +36,10 @@ const PassoDataHora = ({
     <Card>
       <CardHeader>
         <CardTitle>3. Escolha a data e hora</CardTitle>
-        <CardDescription>Selecione o melhor dia e horário para você. Nossas sugestões inteligentes estão em destaque.</CardDescription>
+        <CardDescription>Selecione o melhor dia e horário para você.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8">
           <div className="flex justify-center">
             <Calendar
               mode="single"
@@ -91,11 +88,11 @@ const PassoDataHora = ({
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-6">
-          <Button variant="outline" onClick={passoAnterior}>
+        <div className="flex justify-between mt-6 gap-4">
+          <Button variant="outline" onClick={passoAnterior} className="w-full md:w-auto">
             Voltar
           </Button>
-          <Button onClick={proximoPasso} disabled={!dataSelecionada || !horarioSelecionado}>
+          <Button onClick={proximoPasso} disabled={!dataSelecionada || !horarioSelecionado} className="w-full md:w-auto">
             Próximo
           </Button>
         </div>

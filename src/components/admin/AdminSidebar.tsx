@@ -1,23 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
-import { LayoutDashboard, Users, Scissors, Star } from "lucide-react";
-
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const { pathname } = useLocation();
-  const isActive = pathname === href;
-
-  return (
-    <Link
-      to={href}
-      className={cn(
-        "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-        isActive && "bg-muted text-primary"
-      )}
-    >
-      {children}
-    </Link>
-  );
-};
+import { Link } from "react-router-dom";
+import { Scissors } from "lucide-react";
+import { AdminSidebarNav } from "./AdminSidebarNav";
 
 export const AdminSidebar = () => {
   return (
@@ -29,25 +12,8 @@ export const AdminSidebar = () => {
             <span className="">BarberPro Admin</span>
           </Link>
         </div>
-        <div className="flex-1">
-          <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            <NavLink href="/admin">
-              <LayoutDashboard className="h-4 w-4" />
-              Dashboard
-            </NavLink>
-            <NavLink href="/admin/barbeiros">
-              <Users className="h-4 w-4" />
-              Barbeiros
-            </NavLink>
-            <NavLink href="/admin/servicos">
-              <Scissors className="h-4 w-4" />
-              Serviços
-            </NavLink>
-            <NavLink href="/admin/planos">
-              <Star className="h-4 w-4" />
-              Planos
-            </NavLink>
-          </nav>
+        <div className="flex-1 py-2">
+          <AdminSidebarNav />
         </div>
       </div>
     </div>

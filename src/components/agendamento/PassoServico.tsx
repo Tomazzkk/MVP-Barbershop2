@@ -18,13 +18,13 @@ const PassoServico = ({ servicos, servicoSelecionado, setServicoSelecionado, pro
         <CardDescription>Selecione o serviço que você deseja agendar.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-3">
           {servicos.map((servico) => (
             <button
               key={servico.id}
               onClick={() => setServicoSelecionado(servico)}
               className={cn(
-                "p-4 rounded-lg border text-left transition-all h-full flex flex-col justify-between",
+                "p-4 rounded-lg border text-left transition-all flex justify-between items-center",
                 servicoSelecionado?.id === servico.id
                   ? "border-primary ring-2 ring-primary"
                   : "hover:bg-muted"
@@ -32,17 +32,16 @@ const PassoServico = ({ servicos, servicoSelecionado, setServicoSelecionado, pro
             >
               <div>
                 <h3 className="font-semibold">{servico.nome}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{servico.descricao}</p>
+                <p className="text-sm text-muted-foreground mt-1">{servico.duracao}</p>
               </div>
-              <div className="mt-4">
-                <p className="text-sm text-muted-foreground">{servico.duracao}</p>
+              <div className="text-right">
                 <p className="font-bold">R$ {servico.preco.toFixed(2)}</p>
               </div>
             </button>
           ))}
         </div>
         <div className="flex justify-end mt-6">
-          <Button onClick={proximoPasso} disabled={!servicoSelecionado}>
+          <Button onClick={proximoPasso} disabled={!servicoSelecionado} className="w-full md:w-auto">
             Próximo
           </Button>
         </div>

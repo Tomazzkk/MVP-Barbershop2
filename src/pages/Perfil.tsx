@@ -6,7 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { History, Star, Award, Edit } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Mock data para simulação
 const user = {
   name: "Carlos Andrade",
   email: "carlos.andrade@example.com",
@@ -24,63 +23,58 @@ const recentAppointments = [
 const Perfil = () => {
   return (
     <div className="container mx-auto p-4 md:p-8 space-y-8">
-      {/* Cabeçalho da Página */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Meu Perfil</h1>
-        <Button variant="outline">
+        <h1 className="text-2xl md:text-3xl font-bold">Meu Perfil</h1>
+        <Button variant="outline" size="sm">
           <Edit className="mr-2 h-4 w-4" />
-          Editar Perfil
+          Editar
         </Button>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        {/* Card Principal de Informações */}
-        <Card className="lg:col-span-1 self-start">
-          <CardHeader className="items-center text-center">
-            <Avatar className="h-24 w-24 mb-4">
-              <AvatarImage src={user.avatarUrl} alt={user.name} />
-              <AvatarFallback>{user.initials}</AvatarFallback>
-            </Avatar>
-            <CardTitle className="text-2xl">{user.name}</CardTitle>
-            <CardDescription>{user.email}</CardDescription>
-          </CardHeader>
-          <CardContent className="text-center">
-            <Separator className="my-4" />
-            <div className="space-y-4">
-                <div>
-                    <p className="text-sm text-muted-foreground">Plano Atual</p>
-                    <Badge variant={user.plan === 'Premium' ? 'default' : 'secondary'}>{user.plan}</Badge>
-                </div>
+        <div className="lg:col-span-1 space-y-8">
+          <Card className="self-start">
+            <CardHeader className="items-center text-center">
+              <Avatar className="h-24 w-24 mb-4">
+                <AvatarImage src={user.avatarUrl} alt={user.name} />
+                <AvatarFallback>{user.initials}</AvatarFallback>
+              </Avatar>
+              <CardTitle className="text-2xl">{user.name}</CardTitle>
+              <CardDescription>{user.email}</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+                <CardTitle className="text-lg">Plano Atual</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center space-y-4">
+                <Badge variant={user.plan === 'Premium' ? 'default' : 'secondary'} className="text-lg py-1 px-4">{user.plan}</Badge>
                 <Button asChild className="w-full">
                     <Link to="/planos">Gerenciar Assinatura</Link>
                 </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
 
         <div className="lg:col-span-2 space-y-8">
-          {/* Card de Fidelidade */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Award className="h-5 w-5 text-primary" />
                 Programa de Fidelidade
               </CardTitle>
-              <CardDescription>Você faz parte do nosso programa de recompensas!</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
                 <p className="text-sm text-muted-foreground">Saldo atual</p>
                 <p className="text-2xl font-bold text-primary">{user.points} pontos</p>
               </div>
-              <p className="text-sm text-muted-foreground">Continue agendando para ganhar mais pontos e trocar por recompensas exclusivas.</p>
               <Button asChild className="w-full">
                 <Link to="/pontos">Ver Recompensas e Histórico</Link>
               </Button>
             </CardContent>
           </Card>
 
-          {/* Card de Histórico Recente */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">

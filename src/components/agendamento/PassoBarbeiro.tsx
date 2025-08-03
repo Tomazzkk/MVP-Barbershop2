@@ -21,13 +21,13 @@ const PassoBarbeiro = ({ barbeiros, barbeiroSelecionado, setBarbeiroSelecionado,
         <CardDescription>Selecione o seu barbeiro de preferência.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {barbeiros.map((barbeiro) => (
             <button
               key={barbeiro.id}
               onClick={() => setBarbeiroSelecionado(barbeiro)}
               className={cn(
-                "p-4 rounded-lg border text-left transition-all flex flex-col items-center justify-center gap-2 h-full",
+                "p-3 rounded-lg border text-left transition-all flex flex-col items-center justify-center gap-2 h-full",
                 barbeiroSelecionado?.id === barbeiro.id
                   ? "border-primary ring-2 ring-primary"
                   : "hover:bg-muted"
@@ -37,17 +37,16 @@ const PassoBarbeiro = ({ barbeiros, barbeiroSelecionado, setBarbeiroSelecionado,
                 <AvatarImage src={barbeiro.avatarUrl} alt={barbeiro.nome} />
                 <AvatarFallback>{barbeiro.iniciais}</AvatarFallback>
               </Avatar>
-              <h3 className="font-semibold mt-2">{barbeiro.nome}</h3>
+              <h3 className="font-semibold mt-2 text-center text-sm">{barbeiro.nome}</h3>
               <Badge variant="secondary">{barbeiro.experiencia}</Badge>
-              <p className="text-xs text-muted-foreground text-center mt-1">{barbeiro.disponibilidade}</p>
             </button>
           ))}
         </div>
-        <div className="flex justify-between mt-6">
-          <Button variant="outline" onClick={passoAnterior}>
+        <div className="flex justify-between mt-6 gap-4">
+          <Button variant="outline" onClick={passoAnterior} className="w-full md:w-auto">
             Voltar
           </Button>
-          <Button onClick={proximoPasso} disabled={!barbeiroSelecionado}>
+          <Button onClick={proximoPasso} disabled={!barbeiroSelecionado} className="w-full md:w-auto">
             Próximo
           </Button>
         </div>

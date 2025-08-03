@@ -18,13 +18,47 @@ const AdminBarbeiros = () => {
         <div className="flex justify-between items-center">
           <div>
             <CardTitle>Gerenciar Barbeiros</CardTitle>
-            <CardDescription>Adicione, edite ou remova barbeiros da sua equipe.</CardDescription>
+            <CardDescription>Adicione, edite ou remova barbeiros.</CardDescription>
           </div>
-          <Button>Adicionar Barbeiro</Button>
+          <Button>Adicionar</Button>
         </div>
       </CardHeader>
       <CardContent>
-        <Table>
+        {/* Mobile View */}
+        <div className="md:hidden flex flex-col gap-4">
+          {barbeiros.map((barbeiro) => (
+            <Card key={barbeiro.id} className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <Avatar className="h-12 w-12">
+                    <AvatarImage src={barbeiro.avatarUrl} alt={`Foto de ${barbeiro.nome}`} />
+                    <AvatarFallback>{barbeiro.iniciais}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-medium">{barbeiro.nome}</p>
+                    <p className="text-sm text-muted-foreground">{barbeiro.especialidade}</p>
+                  </div>
+                </div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button aria-haspopup="true" size="icon" variant="ghost">
+                      <MoreHorizontal className="h-4 w-4" />
+                      <span className="sr-only">Toggle menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Ações</DropdownMenuLabel>
+                    <DropdownMenuItem>Editar</DropdownMenuItem>
+                    <DropdownMenuItem>Excluir</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Desktop View */}
+        <Table className="hidden md:table">
           <TableHeader>
             <TableRow>
               <TableHead className="hidden w-[100px] sm:table-cell">

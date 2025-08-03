@@ -17,13 +17,41 @@ const AdminServicos = () => {
         <div className="flex justify-between items-center">
           <div>
             <CardTitle>Gerenciar Serviços</CardTitle>
-            <CardDescription>Adicione, edite ou remova os serviços oferecidos.</CardDescription>
+            <CardDescription>Adicione, edite ou remova serviços.</CardDescription>
           </div>
-          <Button>Adicionar Serviço</Button>
+          <Button>Adicionar</Button>
         </div>
       </CardHeader>
       <CardContent>
-        <Table>
+        {/* Mobile View */}
+        <div className="md:hidden flex flex-col gap-4">
+          {servicos.map((servico) => (
+            <Card key={servico.id} className="p-4">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="font-medium">{servico.nome}</p>
+                  <p className="text-sm text-muted-foreground">{servico.preco} - {servico.duracao}</p>
+                </div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button aria-haspopup="true" size="icon" variant="ghost">
+                      <MoreHorizontal className="h-4 w-4" />
+                      <span className="sr-only">Toggle menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Ações</DropdownMenuLabel>
+                    <DropdownMenuItem>Editar</DropdownMenuItem>
+                    <DropdownMenuItem>Excluir</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Desktop View */}
+        <Table className="hidden md:table">
           <TableHeader>
             <TableRow>
               <TableHead>Nome do Serviço</TableHead>
