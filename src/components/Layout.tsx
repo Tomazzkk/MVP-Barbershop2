@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-grow pb-20 md:pb-0">
+      <main className="flex-grow pb-20 md:pb-0" style={{ perspective: "1200px" }}>
         {children}
       </main>
       <footer className="py-4 hidden md:block">

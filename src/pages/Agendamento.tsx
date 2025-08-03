@@ -5,6 +5,7 @@ import PassoBarbeiro from "@/components/agendamento/PassoBarbeiro";
 import PassoDataHora from "@/components/agendamento/PassoDataHora";
 import PassoResumo from "@/components/agendamento/PassoResumo";
 import { Progress } from "@/components/ui/progress";
+import AnimatedPage from "@/components/AnimatedPage";
 
 // Mock Data
 const servicos = [
@@ -52,57 +53,59 @@ const Agendamento = () => {
   const progress = (step / 4) * 100;
 
   return (
-    <div className="container mx-auto p-4 md:p-8 max-w-4xl">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-2">Faça seu Agendamento</h1>
-        <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
-      </div>
-      
-      <div className="mb-8 px-4">
-        <Progress value={progress} className="w-full" />
-        <p className="text-sm text-muted-foreground text-center mt-2">Passo {step} de 4</p>
-      </div>
+    <AnimatedPage>
+      <div className="container mx-auto p-4 md:p-8 max-w-4xl">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold mb-2">Faça seu Agendamento</h1>
+          <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
+        </div>
+        
+        <div className="mb-8 px-4">
+          <Progress value={progress} className="w-full" />
+          <p className="text-sm text-muted-foreground text-center mt-2">Passo {step} de 4</p>
+        </div>
 
-      <div className="min-h-[400px]">
-        {step === 1 && (
-          <PassoServico
-            servicos={servicos}
-            servicoSelecionado={servicoSelecionado}
-            setServicoSelecionado={setServicoSelecionado}
-            proximoPasso={proximoPasso}
-          />
-        )}
-        {step === 2 && (
-          <PassoBarbeiro
-            barbeiros={barbeiros}
-            barbeiroSelecionado={barbeiroSelecionado}
-            setBarbeiroSelecionado={setBarbeiroSelecionado}
-            proximoPasso={proximoPasso}
-            passoAnterior={passoAnterior}
-          />
-        )}
-        {step === 3 && (
-          <PassoDataHora
-            horariosDisponiveis={horariosDisponiveis}
-            dataSelecionada={dataSelecionada}
-            setDataSelecionada={setDataSelecionada}
-            horarioSelecionado={horarioSelecionado}
-            setHorarioSelecionado={setHorarioSelecionado}
-            proximoPasso={proximoPasso}
-            passoAnterior={passoAnterior}
-          />
-        )}
-        {step === 4 && (
-          <PassoResumo
-            servico={servicoSelecionado}
-            barbeiro={barbeiroSelecionado}
-            data={dataSelecionada}
-            horario={horarioSelecionado}
-            passoAnterior={passoAnterior}
-          />
-        )}
+        <div className="min-h-[400px]">
+          {step === 1 && (
+            <PassoServico
+              servicos={servicos}
+              servicoSelecionado={servicoSelecionado}
+              setServicoSelecionado={setServicoSelecionado}
+              proximoPasso={proximoPasso}
+            />
+          )}
+          {step === 2 && (
+            <PassoBarbeiro
+              barbeiros={barbeiros}
+              barbeiroSelecionado={barbeiroSelecionado}
+              setBarbeiroSelecionado={setBarbeiroSelecionado}
+              proximoPasso={proximoPasso}
+              passoAnterior={passoAnterior}
+            />
+          )}
+          {step === 3 && (
+            <PassoDataHora
+              horariosDisponiveis={horariosDisponiveis}
+              dataSelecionada={dataSelecionada}
+              setDataSelecionada={setDataSelecionada}
+              horarioSelecionado={horarioSelecionado}
+              setHorarioSelecionado={setHorarioSelecionado}
+              proximoPasso={proximoPasso}
+              passoAnterior={passoAnterior}
+            />
+          )}
+          {step === 4 && (
+            <PassoResumo
+              servico={servicoSelecionado}
+              barbeiro={barbeiroSelecionado}
+              data={dataSelecionada}
+              horario={horarioSelecionado}
+              passoAnterior={passoAnterior}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </AnimatedPage>
   );
 };
 

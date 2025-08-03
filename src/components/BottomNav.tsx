@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Calendar, History, Award, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const navItems = [
   { href: "/agendamento", icon: Calendar, label: "Agendar" },
@@ -17,10 +18,20 @@ const NavLink = ({ href, icon: Icon, label }: { href: string; icon: React.Elemen
     <Link
       to={href}
       className={cn(
-        "flex flex-col items-center justify-center gap-1 p-2 flex-1 transition-colors",
+        "relative flex flex-col items-center justify-center gap-1 p-2 flex-1 transition-colors z-10",
         isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
       )}
     >
+      {isActive && (
+        <motion.div
+          layoutId="active-nav-highlight"
+          className="absolute inset-0 bg-primary/10 rounded-md -z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
       <Icon className="h-6 w-6" />
       <span className="text-xs font-medium">{label}</span>
     </Link>

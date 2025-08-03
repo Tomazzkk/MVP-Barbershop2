@@ -1,9 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Users, Calendar as CalendarIcon, Scissors } from "lucide-react";
+import AnimatedPage from "@/components/AnimatedPage";
 
 const Dashboard = () => {
   return (
-    <>
+    <AnimatedPage>
       <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
@@ -57,7 +58,7 @@ const Dashboard = () => {
           </CardContent>
         </Card>
       </div>
-    </>
+    </AnimatedPage>
   );
 };
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useNavigate } from "react-router-dom";
 import { Repeat } from "lucide-react";
+import AnimatedPage from "@/components/AnimatedPage";
 
 // Mock data
 const agendamentos = [
@@ -24,44 +25,46 @@ const Historico = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-6">Histórico de Agendamentos</h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>Meus Agendamentos</CardTitle>
-          <CardDescription>Veja seus agendamentos passados e agende novamente com um clique.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Serviço</TableHead>
-                <TableHead>Barbeiro</TableHead>
-                <TableHead>Data</TableHead>
-                <TableHead>Preço</TableHead>
-                <TableHead className="text-right">Ações</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {agendamentos.map((agendamento) => (
-                <TableRow key={agendamento.id}>
-                  <TableCell className="font-medium">{agendamento.servico}</TableCell>
-                  <TableCell>{agendamento.barbeiro}</TableCell>
-                  <TableCell>{agendamento.data}</TableCell>
-                  <TableCell>{agendamento.preco}</TableCell>
-                  <TableCell className="text-right">
-                    <Button variant="outline" size="sm" onClick={() => handleCortarNovamente(agendamento)}>
-                      <Repeat className="mr-2 h-4 w-4" />
-                      Cortar Novamente
-                    </Button>
-                  </TableCell>
+    <AnimatedPage>
+      <div className="container mx-auto p-4 md:p-8">
+        <h1 className="text-3xl font-bold mb-6">Histórico de Agendamentos</h1>
+        <Card>
+          <CardHeader>
+            <CardTitle>Meus Agendamentos</CardTitle>
+            <CardDescription>Veja seus agendamentos passados e agende novamente com um clique.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Serviço</TableHead>
+                  <TableHead>Barbeiro</TableHead>
+                  <TableHead>Data</TableHead>
+                  <TableHead>Preço</TableHead>
+                  <TableHead className="text-right">Ações</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </div>
+              </TableHeader>
+              <TableBody>
+                {agendamentos.map((agendamento) => (
+                  <TableRow key={agendamento.id}>
+                    <TableCell className="font-medium">{agendamento.servico}</TableCell>
+                    <TableCell>{agendamento.barbeiro}</TableCell>
+                    <TableCell>{agendamento.data}</TableCell>
+                    <TableCell>{agendamento.preco}</TableCell>
+                    <TableCell className="text-right">
+                      <Button variant="outline" size="sm" onClick={() => handleCortarNovamente(agendamento)}>
+                        <Repeat className="mr-2 h-4 w-4" />
+                        Cortar Novamente
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
+    </AnimatedPage>
   );
 };
 
