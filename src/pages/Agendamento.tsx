@@ -144,8 +144,8 @@ const Agendamento = () => {
           <div className="mb-8 px-4">
             <div className="w-full bg-background border rounded-full h-4 overflow-hidden">
               <div 
-                className="bg-primary h-full animate-stripes bg-[linear-gradient(45deg,rgba(0,0,0,.15)_25%,transparent_25%,transparent_50%,rgba(0,0,0,.15)_50%,rgba(0,0,0,.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem] transition-all duration-500 ease-in-out"
-                style={{ width: `${progressPercentage}%` }}
+                className="bg-primary h-full w-full origin-left animate-stripes bg-[linear-gradient(45deg,rgba(0,0,0,.15)_25%,transparent_25%,transparent_50%,rgba(0,0,0,.15)_50%,rgba(0,0,0,.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem] transition-transform duration-500 ease-in-out"
+                style={{ transform: `scaleX(${progressPercentage / 100})` }}
               ></div>
             </div>
             <p className="text-sm text-muted-foreground text-center mt-2">
