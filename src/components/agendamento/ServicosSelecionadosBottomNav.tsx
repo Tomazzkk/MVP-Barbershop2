@@ -17,13 +17,13 @@ const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: S
     <AnimatePresence>
       {servicosSelecionados.length > 0 && (
         <motion.div
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
+          initial={{ y: "120%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: "120%", opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg z-[51]"
+          className="fixed bottom-4 inset-x-4 bg-card/80 backdrop-blur-lg border border-border shadow-2xl rounded-2xl z-[51] overflow-hidden"
         >
-          <div className="container mx-auto max-w-4xl p-4">
+          <div className="p-4">
             <h3 className="font-semibold mb-2 font-beatford">Serviços selecionados</h3>
             <div className="space-y-1 text-sm">
               {servicosSelecionados.map(servico => (
