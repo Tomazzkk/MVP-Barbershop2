@@ -4,7 +4,6 @@ import PassoServico from "@/components/agendamento/PassoServico";
 import PassoBarbeiroEHorario from "@/components/agendamento/PassoBarbeiroEHorario";
 import PassoResumo from "@/components/agendamento/PassoResumo";
 import PassoConcluido from "@/components/agendamento/PassoConcluido";
-import { Progress } from "@/components/ui/progress";
 import { BackButton } from "@/components/BackButton";
 import ServicosSelecionadosBottomNav from "@/components/agendamento/ServicosSelecionadosBottomNav";
 import { motion, AnimatePresence } from "framer-motion";
@@ -72,8 +71,6 @@ const Agendamento = () => {
 
   const proximoPasso = () => setStep((prev) => Math.min(prev + 1, 4));
   const passoAnterior = () => setStep((prev) => Math.max(prev - 1, 1));
-
-  const progress = (step / 3) * 100;
 
   const stepTitles = [
     "Serviços",
@@ -143,7 +140,9 @@ const Agendamento = () => {
         
         {step <= 3 && (
           <div className="mb-8 px-4">
-            <Progress value={progress} className="w-full" />
+            <div className="w-full bg-muted rounded-full h-4 overflow-hidden">
+              <div className="bg-primary h-full animate-stripes bg-[linear-gradient(45deg,rgba(255,255,255,.15)_25%,transparent_25%,transparent_50%,rgba(255,255,255,.15)_50%,rgba(255,255,255,.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem] w-1/4"></div>
+            </div>
             <p className="text-sm text-muted-foreground text-center mt-2">
               Passo {step} de 3
             </p>
