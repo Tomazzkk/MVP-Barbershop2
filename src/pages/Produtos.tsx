@@ -1,33 +1,90 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Package } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
-import { BackButton } from "@/components/BackButton";
+import { Link } from "react-router-dom";
+import { ChevronLeft } from "lucide-react";
+
+// Mock data based on the screenshot
+const produtos = [
+  {
+    id: 1,
+    name: "Pomada Brilho",
+    price: 90.00,
+    points: 550,
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 2,
+    name: "Pomada efeito mate",
+    price: 90.00,
+    points: 550,
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 3,
+    name: "Balm para barba",
+    price: 90.00,
+    points: 550,
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 4,
+    name: "Óleo para barba",
+    price: 70.00,
+    points: 470,
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 5,
+    name: "Old School Grooming",
+    price: 85.00,
+    points: 520,
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 6,
+    name: "Shampoo Refresh",
+    price: 75.00,
+    points: 480,
+    imageUrl: "/placeholder.svg",
+  },
+];
 
 const Produtos = () => {
   return (
     <AnimatedPage>
-      <div className="container mx-auto p-4 md:p-8">
-        <BackButton />
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold">Produtos</h1>
-          <p className="text-muted-foreground">Confira nossa seleção de produtos para cabelo e barba.</p>
+      <div className="container mx-auto p-4">
+        <div className="flex items-center mb-6">
+          <Link to="/" className="text-foreground">
+            <ChevronLeft className="h-8 w-8" />
+          </Link>
         </div>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Package className="h-5 w-5 text-primary" />
-              Nossos Produtos
-            </CardTitle>
-            <CardDescription>
-              Em breve, uma lista de produtos disponíveis em nossas barbearias.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-center h-48 bg-muted rounded-lg">
-              <p className="text-muted-foreground">Conteúdo em construção...</p>
+        
+        <h1 className="text-3xl font-bold tracking-tight">Produtos</h1>
+        <p className="text-muted-foreground mt-1 mb-8">
+          Faça o resgate dos produtos usando seus pontos de fidelidade
+        </p>
+
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8">
+          {produtos.map((produto) => (
+            <div key={produto.id}>
+              <div className="aspect-square w-full overflow-hidden rounded-lg bg-card">
+                <img
+                  src={produto.imageUrl}
+                  alt={produto.name}
+                  className="h-full w-full object-contain object-center p-4"
+                />
+              </div>
+              <div className="mt-2 space-y-0.5">
+                <h3 className="font-semibold text-foreground text-base leading-tight">{produto.name}</h3>
+                <p className="text-sm text-muted-foreground">
+                  R$ {produto.price.toFixed(2).replace('.', ',')}
+                </p>
+                <p className="text-sm font-medium text-primary">
+                  {produto.points} pontos
+                </p>
+              </div>
             </div>
-          </CardContent>
-        </Card>
+          ))}
+        </div>
       </div>
     </AnimatedPage>
   );
