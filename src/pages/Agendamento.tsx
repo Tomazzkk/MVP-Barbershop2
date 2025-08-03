@@ -10,9 +10,18 @@ import { BackButton } from "@/components/BackButton";
 
 // Mock Data
 const servicos = [
-  { id: "corte", nome: "Corte de Cabelo", descricao: "Estilo personalizado para o seu cabelo.", preco: 40.00, duracao: "30 min" },
-  { id: "barba", nome: "Barba", descricao: "Modelagem e cuidados para sua barba.", preco: 30.00, duracao: "25 min" },
-  { id: "combo", nome: "Combo (Cabelo + Barba)", descricao: "Pacote completo para um visual impecável.", preco: 65.00, duracao: "55 min" },
+  { id: "combo", nome: "Combo Cabelo & Barba", descricao: "Pacote completo para um visual impecável.", preco: 120.00, duracao: "80 min" },
+  { id: "sobrancelha", nome: "Sobrancelha", descricao: "Nesse serviço é feita a limpeza da sobrancelha com pinça.", preco: 30.00, duracao: "20 min" },
+  { id: "cabelo", nome: "Cabelo", descricao: "Oferecemos 12 cortes exclusivos, ajustáveis ao seu gosto por barbeiros especializados na escolha do estilo ideal.", preco: 70.00, duracao: "40 min" },
+  { id: "depilacao-nariz", nome: "Depilação de Nariz", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min" },
+  { id: "barba", nome: "Barba", descricao: "Barbear tradicional com lâminas descartáveis, incluindo preparação prévia da pele, uso de toalhas quentes, aplicação de creme ou gel, e cuidados pós-barba.", preco: 60.00, duracao: "40 min" },
+  { id: "depilacao-orelha", nome: "Depilação de Orelha", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min" },
+  { id: "acabamento-barba", nome: "Acabamento de Barba", descricao: "Ajuste e contorno da barba.", preco: 20.00, duracao: "15 min" },
+  { id: "corte-infantil", nome: "Corte Infantil", descricao: "Corte especial para crianças.", preco: 50.00, duracao: "30 min" },
+  { id: "freestyle", nome: "Freestyle", descricao: "Desenhos e estilos personalizados no cabelo.", preco: 90.00, duracao: "60 min" },
+  { id: "hidratacao", nome: "Hidratação", descricao: "Tratamento para revitalizar os fios.", preco: 40.00, duracao: "20 min" },
+  { id: "acabamento-cabelo", nome: "Acabamento de Cabelo", descricao: "Ajuste e contorno do corte.", preco: 20.00, duracao: "15 min" },
+  { id: "platinado", nome: "Platinado com Corte", descricao: "Descoloração global para o tom platinado, inclui o corte.", preco: 250.00, duracao: "180 min" },
 ];
 
 const barbeiros = [
@@ -30,7 +39,7 @@ export type Barbeiro = (typeof barbeiros)[0];
 const Agendamento = () => {
   const location = useLocation();
   const [step, setStep] = useState(1);
-  const [servicoSelecionado, setServicoSelecionado] = useState<Servico | null>(null);
+  const [servicosSelecionados, setServicosSelecionados] = useState<Servico[]>([]);
   const [barbeiroSelecionado, setBarbeiroSelecionado] = useState<Barbeiro | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState<Date | undefined>(new Date());
   const [horarioSelecionado, setHorarioSelecionado] = useState<string | null>(null);
@@ -40,7 +49,7 @@ const Agendamento = () => {
       const servico = servicos.find(s => s.id === location.state.servicoId);
       const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
 
-      if (servico) setServicoSelecionado(servico);
+      if (servico) setServicosSelecionados([servico]);
       if (barbeiro) setBarbeiroSelecionado(barbeiro);
 
       // Pula para a etapa de seleção de data/hora
@@ -58,8 +67,17 @@ const Agendamento = () => {
       <div className="container mx-auto p-4 md:p-8 max-w-4xl">
         <BackButton />
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2 font-beatford">Faça seu Agendamento</h1>
-          <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
+          {step === 1 ? (
+            <>
+              <h1 className="text-3xl font-bold mb-2 font-beatford">Serviços</h1>
+              <p className="text-muted-foreground">Garanta seu desconto em combos com 2 ou mais serviços.</p>
+            </>
+          ) : (
+            <>
+              <h1 className="text-3xl font-bold mb-2 font-beatford">Faça seu Agendamento</h1>
+              <p className="text-muted-foreground">Siga os passos para garantir seu horário.</p>
+            </>
+          )}
         </div>
         
         <div className="mb-8 px-4">
@@ -71,8 +89,8 @@ const Agendamento = () => {
           {step === 1 && (
             <PassoServico
               servicos={servicos}
-              servicoSelecionado={servicoSelecionado}
-              setServicoSelecionado={setServicoSelecionado}
+              servicosSelecionados={servicosSelecionados}
+              setServicosSelecionados={setServicosSelecionados}
               proximoPasso={proximoPasso}
             />
           )}
@@ -98,7 +116,7 @@ const Agendamento = () => {
           )}
           {step === 4 && (
             <PassoResumo
-              servico={servicoSelecionado}
+              servicos={servicosSelecionados}
               barbeiro={barbeiroSelecionado}
               data={dataSelecionada}
               horario={horarioSelecionado}

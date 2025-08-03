@@ -1,52 +1,61 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 import { Servico } from "@/pages/Agendamento";
 
 interface PassoServicoProps {
   servicos: Servico[];
-  servicoSelecionado: Servico | null;
-  setServicoSelecionado: (servico: Servico) => void;
+  servicosSelecionados: Servico[];
+  setServicosSelecionados: (servicos: Servico[]) => void;
   proximoPasso: () => void;
 }
 
-const PassoServico = ({ servicos, servicoSelecionado, setServicoSelecionado, proximoPasso }: PassoServicoProps) => {
+const PassoServico = ({ servicos, servicosSelecionados, setServicosSelecionados, proximoPasso }: PassoServicoProps) => {
+  const handleToggleServico = (servico: Servico) => {
+    const isSelected = servicosSelecionados.some(s => s.id === servico.id);
+    if (isSelected) {
+      setServicosSelecionados(servicosSelecionados.filter(s => s.id !== servico.id));
+    } else {
+      setServicosSelecionados([...servicosSelecionados, servico]);
+    }
+  };
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="font-beatford">1. Escolha o serviço</CardTitle>
-        <CardDescription>Selecione o serviço que você deseja agendar.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-3">
-          {servicos.map((servico) => (
-            <button
-              key={servico.id}
-              onClick={() => setServicoSelecionado(servico)}
-              className={cn(
-                "p-4 rounded-lg border text-left transition-all flex justify-between items-center",
-                servicoSelecionado?.id === servico.id
-                  ? "border-primary ring-2 ring-primary"
-                  : "hover:bg-muted"
-              )}
-            >
-              <div>
-                <h3 className="font-semibold font-beatford">{servico.nome}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{servico.duracao}</p>
+    <div>
+      <div className="space-y-6">
+        {servicos.map((servico, index) => {
+          const isSelected = servicosSelecionados.some(s => s.id === servico.id);
+          return (
+            <div key={servico.id}>
+              <div className="flex justify-between items-start">
+                <div className="flex-1 pr-4">
+                  <h3 className="font-semibold font-beatford text-lg">{servico.nome}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{servico.descricao}</p>
+                  <div className="flex items-center gap-4 mt-2">
+                    <p className="text-sm font-bold text-primary">R$ {servico.preco.toFixed(2)}</p>
+                    <p className="text-sm text-muted-foreground">{servico.duracao}</p>
+                  </div>
+                </div>
+                <Button
+                  onClick={() => handleToggleServico(servico)}
+                  variant={isSelected ? "secondary" : "default"}
+                  size="sm"
+                  className="font-beatford"
+                >
+                  {isSelected ? "Remover" : "Adicionar"}
+                </Button>
               </div>
-              <div className="text-right">
-                <p className="font-bold">R$ {servico.preco.toFixed(2)}</p>
-              </div>
-            </button>
-          ))}
-        </div>
-        <div className="flex justify-end mt-6">
-          <Button onClick={proximoPasso} disabled={!servicoSelecionado} className="w-full md:w-auto font-beatford">
-            Próximo
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+              {index < servicos.length - 1 && <Separator className="mt-6" />}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex justify-end mt-6">
+        <Button onClick={proximoPasso} disabled={servicosSelecionados.length === 0} className="w-full md:w-auto font-beatford" size="lg">
+          Próximo
+        </Button>
+      </div>
+    </div>
   );
 };
 
