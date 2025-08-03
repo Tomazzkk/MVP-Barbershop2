@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PassoServico from "@/components/agendamento/PassoServico";
-import PassoBarbeiro from "@/components/agendamento/PassoBarbeiro";
-import PassoHorario from "@/components/agendamento/PassoHorario";
+import PassoBarbeiroEHorario from "@/components/agendamento/PassoBarbeiroEHorario";
 import PassoResumo from "@/components/agendamento/PassoResumo";
+import PassoConcluido from "@/components/agendamento/PassoConcluido";
 import { Progress } from "@/components/ui/progress";
 import { BackButton } from "@/components/BackButton";
 import ServicosSelecionadosBottomNav from "@/components/agendamento/ServicosSelecionadosBottomNav";
@@ -61,16 +61,12 @@ const Agendamento = () => {
     if (location.state?.servicoId) {
       const servico = servicos.find(s => s.id === location.state.servicoId);
       if (servico) setServicosSelecionados([servico]);
-
+      
       if (location.state.barbeiroId) {
         const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
-        if (barbeiro) {
-          setBarbeiroSelecionado(barbeiro);
-          setStep(3); // Pula para a seleção de horário
-        }
-      } else {
-        setStep(2); // Pula para a seleção de barbeiro
+        if (barbeiro) setBarbeiroSelecionado(barbeiro);
       }
+      setStep(2); // Pula para a seleção de barbeiro e horário
     }
   }, [location.state]);
 
@@ -81,16 +77,16 @@ const Agendamento = () => {
 
   const stepTitles = [
     "Serviços",
-    "Escolha o Barbeiro",
-    "Escolha a Data e Hora",
-    "Confirme seu Agendamento"
+    "Profissional e Horário",
+    "Confirmação",
+    "Agendamento Concluído"
   ];
 
   const stepDescriptions = [
     "Garanta seu desconto em combos com 2 ou mais serviços.",
-    "Selecione seu profissional de preferência.",
-    "Escolha o melhor dia e horário para você.",
-    "Revise os detalhes e confirme seu horário."
+    "Selecione seu profissional, a data e o horário.",
+    "Revise os detalhes e confirme seu horário.",
+    "Tudo certo! Seu horário está garantido."
   ];
 
   const renderStep = () => {
@@ -105,18 +101,11 @@ const Agendamento = () => {
         );
       case 2:
         return (
-          <PassoBarbeiro
+          <PassoBarbeiroEHorario
             servicosSelecionados={servicosSelecionados}
             barbeiros={barbeiros}
             barbeiroSelecionado={barbeiroSelecionado}
             setBarbeiroSelecionado={setBarbeiroSelecionado}
-            proximoPasso={proximoPasso}
-            passoAnterior={passoAnterior}
-          />
-        );
-      case 3:
-        return (
-          <PassoHorario
             horariosDisponiveis={horariosDisponiveis}
             dataSelecionada={dataSelecionada}
             setDataSelecionada={setDataSelecionada}
@@ -126,7 +115,7 @@ const Agendamento = () => {
             passoAnterior={passoAnterior}
           />
         );
-      case 4:
+      case 3:
         return (
           <PassoResumo
             servicos={servicosSelecionados}
@@ -134,8 +123,11 @@ const Agendamento = () => {
             data={dataSelecionada}
             horario={horarioSelecionado}
             passoAnterior={passoAnterior}
+            proximoPasso={proximoPasso}
           />
         );
+      case 4:
+        return <PassoConcluido />;
       default:
         return null;
     }

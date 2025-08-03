@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Servico, Barbeiro } from "@/pages/Agendamento";
 import { format } from "date-fns";
-import { showSuccess } from "@/utils/toast";
-import { useNavigate } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 
 interface PassoResumoProps {
@@ -12,22 +10,21 @@ interface PassoResumoProps {
   data: Date | undefined;
   horario: string | null;
   passoAnterior: () => void;
+  proximoPasso: () => void;
 }
 
-const PassoResumo = ({ servicos, barbeiro, data, horario, passoAnterior }: PassoResumoProps) => {
-  const navigate = useNavigate();
+const PassoResumo = ({ servicos, barbeiro, data, horario, passoAnterior, proximoPasso }: PassoResumoProps) => {
   const totalPreco = servicos.reduce((total, servico) => total + servico.preco, 0);
 
   const handleConfirmar = () => {
     // Em uma aplicação real, aqui seria feita a chamada para a API.
-    showSuccess("Agendamento confirmado com sucesso!");
-    navigate("/historico");
+    proximoPasso();
   };
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-beatford">4. Confirmação</CardTitle>
+        <CardTitle className="font-beatford">3. Confirmação</CardTitle>
         <CardDescription>Confira os detalhes antes de confirmar.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
