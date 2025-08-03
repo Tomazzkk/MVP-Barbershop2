@@ -13,8 +13,8 @@
     --popover: 215 28% 17%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 45 93% 53%; /* Yellow #FACC15 */
-    --primary-foreground: 215 28% 11%; /* Dark Gray for text on yellow */
+    --primary: 255 91% 66%; /* Purple #8B5CF6 */
+    --primary-foreground: 0 0% 100%; /* White */
 
     --secondary: 215 28% 25%; /* Lighter Gray */
     --secondary-foreground: 0 0% 100%;
@@ -23,25 +23,25 @@
     --muted-foreground: 215 14% 84%; /* Light Gray #D1D5DB */
 
     --accent: 215 28% 25%;
-    --accent-foreground: 45 93% 53%; /* Yellow #FACC15 */
+    --accent-foreground: 255 91% 66%; /* Purple #8B5CF6 */
 
     --destructive: 0 84% 60%; /* Red #EF4444 */
     --destructive-foreground: 0 0% 100%;
 
     --border: 215 28% 25%;
     --input: 215 28% 25%;
-    --ring: 45 93% 53%; /* Yellow #FACC15 */
+    --ring: 255 91% 66%; /* Purple #8B5CF6 */
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 0%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 45 93% 53%;
-    --sidebar-primary-foreground: 215 28% 11%;
+    --sidebar-primary: 255 91% 66%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 215 28% 25%;
-    --sidebar-accent-foreground: 45 93% 53%;
+    --sidebar-accent-foreground: 255 91% 66%;
     --sidebar-border: 215 28% 25%;
-    --sidebar-ring: 45 93% 53%;
+    --sidebar-ring: 255 91% 66%;
   }
 }
 
