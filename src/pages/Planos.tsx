@@ -1,58 +1,124 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, ArrowLeft, HelpCircle, ShieldCheck, Clock, Star } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
-import { BackButton } from "@/components/BackButton";
+import { useNavigate } from "react-router-dom";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+
+const plans = [
+  {
+    name: "Básico",
+    price: 49,
+    features: [
+      "2 cortes por mês",
+      "Agendamento padrão",
+      "Desconto de 10%",
+    ],
+    isPopular: false,
+  },
+  {
+    name: "Premium",
+    price: 89,
+    features: [
+      "Cortes ilimitados",
+      "Prioridade no agendamento",
+      "Desconto de 20%",
+      "Barba grátis",
+    ],
+    isPopular: true,
+  },
+  {
+    name: "VIP",
+    price: 149,
+    features: [
+      "Tudo do Premium",
+      "Atendimento domiciliar",
+      "Produtos premium",
+      "Consultor de estilo",
+    ],
+    isPopular: false,
+  },
+];
 
 const Planos = () => {
+  const navigate = useNavigate();
+
   return (
     <AnimatedPage>
-      <div className="container mx-auto p-4 md:p-8">
-        <BackButton />
-        <h1 className="text-3xl font-bold mb-6 text-center font-beatford">Nossos Planos</h1>
-        <p className="text-center text-muted-foreground mb-8">Escolha o plano que melhor se adapta a você.</p>
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-beatford">Gratuito</CardTitle>
-              <p className="text-2xl font-bold">R$ 0<span className="text-sm font-normal">/mês</span></p>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <ul className="space-y-2">
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Agendamentos básicos</li>
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Histórico de 1 mês</li>
-              </ul>
-              <Button variant="outline" className="w-full font-beatford">Plano Atual</Button>
-            </CardContent>
-          </Card>
-          <Card className="border-primary border-2 shadow-lg shadow-primary/10">
-            <CardHeader>
-              <CardTitle className="font-beatford">Básico</CardTitle>
-              <p className="text-2xl font-bold">R$ 19,90<span className="text-sm font-normal">/mês</span></p>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <ul className="space-y-2">
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Agendamentos ilimitados</li>
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Histórico completo</li>
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Lembretes por e-mail</li>
-              </ul>
-              <Button className="w-full font-beatford">Fazer Upgrade</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-beatford">Premium</CardTitle>
-              <p className="text-2xl font-bold">R$ 39,90<span className="text-sm font-normal">/mês</span></p>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <ul className="space-y-2">
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Todos os benefícios do Básico</li>
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Descontos exclusivos</li>
-                <li className="flex items-center"><Check className="h-4 w-4 mr-2 text-green-500" />Sugestões de horário com IA</li>
-              </ul>
-              <Button variant="outline" className="w-full font-beatford">Fazer Upgrade</Button>
-            </CardContent>
-          </Card>
+      <div className="p-4 pb-24">
+        {/* Header */}
+        <header className="flex items-center justify-between mb-8">
+          <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+          <h1 className="text-lg font-semibold font-beatford">Planos Premium</h1>
+          <Button variant="ghost" size="icon">
+            <HelpCircle className="h-6 w-6" />
+          </Button>
+        </header>
+
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold font-beatford tracking-tight">Escolha seu Plano</h2>
+          <p className="text-muted-foreground mt-2 max-w-md mx-auto">
+            Desfrute de benefícios exclusivos e experiência premium
+          </p>
+        </div>
+
+        {/* Plans Grid */}
+        <div className="space-y-6">
+          {plans.map((plan) => (
+            <Card key={plan.name} className={cn(
+              "bg-muted/50 border-border/80 relative overflow-hidden transition-all",
+              plan.isPopular && "border-2 border-primary shadow-lg shadow-primary/10"
+            )}>
+              {plan.isPopular && (
+                <Badge className="absolute top-4 right-4 font-beatford">MAIS POPULAR</Badge>
+              )}
+              <CardHeader>
+                <CardTitle className="font-beatford text-2xl">{plan.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <span className="text-4xl font-bold">R$ {plan.price}</span>
+                  <span className="text-muted-foreground">/mês</span>
+                </div>
+                <ul className="space-y-3 text-sm">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-3">
+                      <Check className="h-5 w-5 text-primary" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button size="lg" className={cn("w-full font-beatford", !plan.isPopular && "bg-secondary hover:bg-secondary/80")}>
+                  Assinar Agora
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Footer Info */}
+        <div className="text-center mt-12 space-y-4">
+            <p className="text-xs text-muted-foreground">
+                Cancele a qualquer momento. Sem taxas ocultas.
+            </p>
+            <div className="flex justify-center items-center gap-4 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="h-4 w-4" />
+                    <span>Seguro</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                    <Clock className="h-4 w-4" />
+                    <span>24/7</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                    <Star className="h-4 w-4" />
+                    <span>Premium</span>
+                </div>
+            </div>
         </div>
       </div>
     </AnimatedPage>
