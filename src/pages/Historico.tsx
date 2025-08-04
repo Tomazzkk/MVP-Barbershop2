@@ -36,7 +36,30 @@ const Historico = () => {
             <CardDescription>Veja seus agendamentos passados e agende novamente com um clique.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Table>
+            {/* Mobile View */}
+            <div className="md:hidden flex flex-col gap-4">
+              {agendamentos.map((agendamento) => (
+                <Card key={agendamento.id} className="p-4 bg-muted/50">
+                  <div className="flex flex-col gap-3">
+                    <div>
+                      <p className="font-medium">{agendamento.servico}</p>
+                      <p className="text-sm text-muted-foreground">{agendamento.barbeiro}</p>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">{agendamento.data}</span>
+                      <span className="font-semibold">{agendamento.preco}</span>
+                    </div>
+                    <Button variant="outline" size="sm" onClick={() => handleCortarNovamente(agendamento)} className="w-full font-beatford">
+                      <Repeat className="mr-2 h-4 w-4" />
+                      Cortar Novamente
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Desktop View */}
+            <Table className="hidden md:table">
               <TableHeader>
                 <TableRow>
                   <TableHead>Serviço</TableHead>

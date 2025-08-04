@@ -1,13 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import AnimatedPage from "@/components/AnimatedPage";
 import { BackButton } from "@/components/BackButton";
 
 const barbeiros = [
-  { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", especialidade: "Corte Clássico", experiencia: "Sênior" },
-  { id: "carlos", nome: "Carlos Souza", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS", especialidade: "Barba e Bigode", experiencia: "Pleno" },
-  { id: "pedro", nome: "Pedro Martins", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM", especialidade: "Corte Moderno", experiencia: "Júnior" },
+  { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", especialidade: "Corte Clássico" },
+  { id: "carlos", nome: "Carlos Souza", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS", especialidade: "Barba e Bigode" },
+  { id: "pedro", nome: "Pedro Martins", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM", especialidade: "Corte Moderno" },
 ];
 
 const Profissionais = () => {
@@ -30,9 +29,6 @@ const Profissionais = () => {
                 <CardTitle className="font-beatford">{barbeiro.nome}</CardTitle>
                 <CardDescription>{barbeiro.especialidade}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <Badge variant="secondary">{barbeiro.experiencia}</Badge>
-              </CardContent>
             </Card>
           ))}
         </div>

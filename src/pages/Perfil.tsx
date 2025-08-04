@@ -87,9 +87,11 @@ const Perfil = () => {
             <h2 className="text-2xl font-bold font-beatford">{user.name}</h2>
             <p className="text-muted-foreground">{user.email}</p>
           </div>
-          <Button variant="secondary" className="font-beatford">
-            <Edit className="mr-2 h-4 w-4" />
-            Editar Perfil
+          <Button asChild variant="secondary" className="font-beatford">
+            <Link to="/perfil/editar">
+              <Edit className="mr-2 h-4 w-4" />
+              Editar Perfil
+            </Link>
           </Button>
         </div>
 
@@ -103,7 +105,7 @@ const Perfil = () => {
               <p className="text-sm text-muted-foreground">Cortes realizados</p>
               <p className="font-bold">{fidelity.completed}/{fidelity.total}</p>
             </div>
-            <div className="grid grid-cols-5 gap-3 mb-4">
+            <div className="grid grid-cols-10 gap-2 mb-4">
               {Array.from({ length: fidelity.total }).map((_, index) => (
                 <div
                   key={index}
@@ -114,7 +116,7 @@ const Perfil = () => {
                       : "bg-background/50 border-2 border-dashed border-muted-foreground/50"
                   )}
                 >
-                  <Scissors className={cn("h-5 w-5", index >= fidelity.completed && "text-muted-foreground/50")} />
+                  <Scissors className={cn("h-4 w-4", index >= fidelity.completed && "text-muted-foreground/50")} />
                 </div>
               ))}
             </div>

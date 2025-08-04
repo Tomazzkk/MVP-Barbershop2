@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
-  const mainNavPaths = ['/', '/planos', '/perfil', '/avisos'];
+  const mainNavPaths = ['/', '/planos', '/perfil', '/avisos', '/historico'];
   const showBottomNav = mainNavPaths.includes(pathname);
 
   return (

@@ -10,7 +10,7 @@ export const RecommendedBarbers = () => {
   return (
     <section className="space-y-4">
       <div className="flex justify-between items-center px-4">
-        <h2 className="text-xl font-bold font-beatford">Barbeiros Recomendados</h2>
+        <h2 className="text-xl font-bold font-beatford">Nossos profissionais</h2>
         <Link to="/profissionais" className="text-sm font-semibold text-primary hover:underline">
           Ver todos
         </Link>

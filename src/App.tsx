@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Agendamento from "./pages/Agendamento";
 import Layout from "./components/Layout";
 import Perfil from "./pages/Perfil";
+import EditarPerfil from "./pages/EditarPerfil";
 import Historico from "./pages/Historico";
 import Planos from "./pages/Planos";
 import Pontos from "./pages/Pontos";
@@ -45,6 +46,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Layout><Index /></Layout>} />
         <Route path="/agendamento" element={<Layout><Agendamento /></Layout>} />
         <Route path="/perfil" element={<Layout><Perfil /></Layout>} />
+        <Route path="/perfil/editar" element={<Layout><EditarPerfil /></Layout>} />
         <Route path="/configuracoes" element={<Layout><Configuracoes /></Layout>} />
         <Route path="/historico" element={<Layout><Historico /></Layout>} />
         <Route path="/planos" element={<Layout><Planos /></Layout>} />
