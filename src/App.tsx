@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import Cadastro from "./pages/Cadastro";
 import Agendamento from "./pages/Agendamento";
 import Layout from "./components/Layout";
 import Perfil from "./pages/Perfil";
@@ -41,6 +42,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         
         {/* Client-facing routes */}
         <Route path="/" element={<Layout><Index /></Layout>} />
