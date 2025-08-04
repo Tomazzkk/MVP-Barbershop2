@@ -17,6 +17,7 @@ import Produtos from "./pages/Produtos";
 import Profissionais from "./pages/Profissionais";
 import Barbearias from "./pages/Barbearias";
 import Configuracoes from "./pages/Configuracoes";
+import Avisos from "./pages/Avisos";
 
 // Admin imports
 import AdminLayout from "./components/admin/AdminLayout";
@@ -51,6 +52,7 @@ const AnimatedRoutes = () => {
         <Route path="/produtos" element={<Layout><Produtos /></Layout>} />
         <Route path="/profissionais" element={<Layout><Profissionais /></Layout>} />
         <Route path="/barbearias" element={<Layout><Barbearias /></Layout>} />
+        <Route path="/avisos" element={<Layout><Avisos /></Layout>} />
 
         {/* Admin routes */}
         <Route path="/admin" element={<AdminRoutes />}>
