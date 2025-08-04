@@ -22,8 +22,17 @@ const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: S
           className="fixed bottom-0 inset-x-0 bg-background border-t border-border z-50"
         >
           <div className="container mx-auto p-4 max-w-4xl">
+            <div className="mb-3 space-y-1.5 border-b pb-3">
+              <h4 className="font-semibold mb-2">Serviços Selecionados</h4>
+              {servicosSelecionados.map((servico) => (
+                <div key={servico.id} className="flex justify-between items-center text-sm">
+                  <span className="text-muted-foreground">{servico.nome}</span>
+                  <span className="font-medium">R$ {servico.preco.toFixed(2).replace('.', ',')}</span>
+                </div>
+              ))}
+            </div>
             <div className="flex justify-between items-center mb-4">
-              <p className="font-semibold">{servicosSelecionados.length} serviço{servicosSelecionados.length > 1 ? 's' : ''} selecionado</p>
+              <p className="font-semibold">Total</p>
               <p className="font-bold text-lg">
                 R$ <NumberTicker value={totalPreco} />
               </p>
