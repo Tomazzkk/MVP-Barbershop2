@@ -19,6 +19,7 @@ export default {
     },
     extend: {
       fontFamily: {
+        sans: ["Poppins", "sans-serif"],
         beatford: ["Beatford", "sans-serif"],
       },
       colors: {

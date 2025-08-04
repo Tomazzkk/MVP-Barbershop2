@@ -65,12 +65,12 @@ const Produtos = () => {
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-8">
           {produtos.map((produto) => (
-            <div key={produto.id}>
-              <div className="aspect-square w-full overflow-hidden rounded-lg bg-card">
+            <div key={produto.id} className="group">
+              <div className="aspect-square w-full overflow-hidden rounded-lg bg-muted border-2 border-transparent group-hover:border-primary transition-colors">
                 <img
                   src={produto.imageUrl}
                   alt={produto.name}
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="mt-2 space-y-0.5">

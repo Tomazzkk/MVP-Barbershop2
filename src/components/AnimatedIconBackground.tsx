@@ -49,7 +49,7 @@ const AnimatedIconBackground = () => {
             variants={variants}
             animate="animate"
           >
-            <Icon className="w-6 h-6 text-foreground opacity-[0.08] dark:opacity-[0.04]" />
+            <Icon className="w-6 h-6 text-foreground opacity-[0.06]" />
           </motion.div>
         ))}
       </div>

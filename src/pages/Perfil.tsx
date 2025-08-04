@@ -24,13 +24,13 @@ interface ProfileMenuItemProps {
 }
 
 const ProfileMenuItem: React.FC<ProfileMenuItemProps> = ({ icon: Icon, title, subtitle, to = "#" }) => (
-  <Link to={to} className="flex items-center py-4 rounded-lg group transition-colors">
-    <Icon className="h-5 w-5 text-muted-foreground mr-4 flex-shrink-0" />
+  <Link to={to} className="flex items-center py-4 rounded-lg group transition-colors hover:bg-muted/50 px-2 -mx-2">
+    <Icon className="h-5 w-5 text-primary mr-4 flex-shrink-0" />
     <div className="flex-1">
       <p className="font-medium text-sm font-beatford">{title}</p>
       <p className="text-xs text-muted-foreground">{subtitle}</p>
     </div>
-    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+    <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
   </Link>
 );
 
@@ -57,7 +57,7 @@ const Perfil = () => {
       <div className="container mx-auto p-4 md:p-8 max-w-lg">
         {/* Header */}
         <div className="flex items-center gap-4 mb-6">
-          <Avatar className="h-16 w-16">
+          <Avatar className="h-16 w-16 border-2 border-primary">
             <AvatarImage src={user.avatarUrl} alt={user.name} />
             <AvatarFallback>{user.initials}</AvatarFallback>
           </Avatar>
@@ -69,8 +69,8 @@ const Perfil = () => {
 
         {/* Menu */}
         <div className="flex flex-col">
-          <div className="flex items-center py-4 rounded-lg group transition-colors">
-            <Repeat className="h-5 w-5 text-muted-foreground mr-4 flex-shrink-0" />
+          <div className="flex items-center py-4 rounded-lg group transition-colors hover:bg-muted/50 px-2 -mx-2">
+            <Repeat className="h-5 w-5 text-primary mr-4 flex-shrink-0" />
             <div className="flex-1">
               <p className="font-medium text-sm font-beatford">Alterar Unidade</p>
             </div>

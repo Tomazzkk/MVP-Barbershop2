@@ -71,10 +71,10 @@ const PassoBarbeiroEHorario = ({
               key={barbeiro.id}
               onClick={() => handleBarberSelection(barbeiro)}
               className={cn(
-                "flex-shrink-0 w-28 flex flex-col items-center gap-2 p-2 rounded-lg border text-center transition-all",
+                "flex-shrink-0 w-28 flex flex-col items-center gap-2 p-2 rounded-lg border-2 text-center transition-all",
                 isBarberSelected(barbeiro)
-                  ? "border-primary ring-2 ring-primary bg-primary/10"
-                  : "hover:bg-muted"
+                  ? "border-primary bg-primary/10"
+                  : "border-muted hover:border-primary/50"
               )}
             >
               <Avatar className="h-16 w-16">
@@ -104,10 +104,10 @@ const PassoBarbeiroEHorario = ({
               key={date.toISOString()}
               onClick={() => setDataSelecionada(date)}
               className={cn(
-                "flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-lg border transition-colors",
+                "flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-lg border-2 transition-colors",
                 isSameDay(date, dataSelecionada || new Date())
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted/50 hover:bg-muted"
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-muted border-muted hover:border-primary/50"
               )}
             >
               <span className="text-2xl font-bold">{format(date, "d")}</span>

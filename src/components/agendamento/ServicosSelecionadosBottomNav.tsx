@@ -22,7 +22,7 @@ const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: S
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "120%", opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 inset-x-4 bg-card/80 backdrop-blur-lg border border-border shadow-2xl rounded-2xl z-[51] overflow-hidden"
+          className="fixed bottom-4 inset-x-4 bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-[51] overflow-hidden"
         >
           <div className="p-4">
             <h3 className="font-semibold mb-2 font-beatford">Serviços selecionados</h3>

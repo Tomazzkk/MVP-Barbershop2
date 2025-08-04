@@ -18,8 +18,9 @@ const Index = () => {
       {/* Hero/Menu Section */}
       <section className="container mx-auto p-4 md:p-6 flex flex-col min-h-[80vh] justify-center">
         <div className="text-center pt-8">
-          <img src="/placeholder.svg" alt="BarberPro Logo" className="w-32 h-auto mx-auto mb-2" />
-          <p className="text-muted-foreground">Selecione uma opção para começar.</p>
+          <img src="/placeholder.svg" alt="BarberPro Logo" className="w-36 h-auto mx-auto mb-4" />
+          <h1 className="text-4xl font-beatford text-primary tracking-wider">BarberPro</h1>
+          <p className="text-muted-foreground mt-2">Selecione uma opção para começar.</p>
         </div>
 
         <div className="flex-grow flex flex-col justify-center items-center gap-3 w-full max-w-md mx-auto">

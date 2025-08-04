@@ -25,7 +25,7 @@ const Planos = () => {
               <Button variant="outline" className="w-full font-beatford">Plano Atual</Button>
             </CardContent>
           </Card>
-          <Card className="border-primary">
+          <Card className="border-primary border-2 shadow-lg shadow-primary/10">
             <CardHeader>
               <CardTitle className="font-beatford">Básico</CardTitle>
               <p className="text-2xl font-bold">R$ 19,90<span className="text-sm font-normal">/mês</span></p>

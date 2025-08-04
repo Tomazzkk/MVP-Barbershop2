@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import AnimatedPage from "@/components/AnimatedPage";
-import { LogOut, Palette } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { LogOut } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 
 const Configuracoes = () => {
@@ -15,26 +13,6 @@ const Configuracoes = () => {
           <h1 className="text-3xl font-bold font-beatford">Configurações</h1>
           <p className="text-muted-foreground">Gerencie suas preferências e sua conta.</p>
         </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 font-beatford">
-              <Palette className="h-5 w-5 text-primary" />
-              Aparência
-            </CardTitle>
-            <CardDescription>
-              Personalize a aparência do aplicativo.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <p className="font-medium">Tema</p>
-              <ThemeToggle />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Separator className="my-8" />
 
         <Card>
           <CardHeader>
