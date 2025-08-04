@@ -13,15 +13,15 @@ const navItems = [
 
 export const BottomNav = () => {
   const { pathname } = useLocation();
-  const mainNavPaths = ['/', '/planos', '/perfil', '/avisos'];
-
-  // Hide if it's an admin path, login, or not a main nav path
-  if (pathname.startsWith('/admin') || pathname === '/login' || !mainNavPaths.includes(pathname)) {
-    return null;
-  }
 
   return (
-    <nav className="fixed bottom-4 inset-x-4 max-w-md mx-auto bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-50 md:bottom-6 p-1">
+    <motion.nav
+      className="fixed bottom-4 inset-x-4 max-w-md mx-auto bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-50 md:bottom-6 p-1"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    >
       <div className="flex justify-around items-center h-16 px-1">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -59,6 +59,6 @@ export const BottomNav = () => {
           );
         })}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
