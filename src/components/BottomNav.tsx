@@ -32,8 +32,8 @@ export const BottomNav = () => {
   }
 
   return (
-    <nav className="fixed bottom-4 inset-x-4 max-w-md mx-auto bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-50 md:bottom-6 overflow-hidden">
-      <div className="flex justify-around items-center h-14">
+    <nav className="fixed bottom-4 inset-x-4 max-w-md mx-auto bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-50 md:bottom-6 p-1">
+      <div className="flex justify-around items-center h-14 px-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
@@ -43,14 +43,14 @@ export const BottomNav = () => {
               key={item.href}
               to={item.href}
               className={cn(
-                "relative flex flex-col items-center justify-center gap-1 w-full h-full transition-colors z-10",
+                "relative flex flex-col items-center justify-center gap-1 w-full h-full rounded-xl transition-colors z-10",
                 isActive ? "text-primary" : "text-muted-foreground hover:text-primary/90"
               )}
             >
               {isActive && (
                 <motion.div
                   layoutId="active-nav-indicator"
-                  className="absolute inset-0 bg-primary/20 -z-10"
+                  className="absolute inset-0 bg-primary/20 rounded-xl -z-10"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
