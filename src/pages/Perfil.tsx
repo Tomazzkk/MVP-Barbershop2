@@ -36,10 +36,10 @@ const ProfileMenuItem: React.FC<ProfileMenuItemProps> = ({ icon: Icon, title, su
 
 const Perfil = () => {
   const user = {
-    name: "BarberLucas",
-    email: "contato@barberlucas.com",
-    avatarUrl: "https://i.pravatar.cc/150?u=barberlucas",
-    initials: "BL",
+    name: "MvpBarber",
+    email: "contato@mvpbarber.com",
+    avatarUrl: "https://i.pravatar.cc/150?u=mvpbarber",
+    initials: "MB",
   };
 
   const menuItems: ProfileMenuItemProps[] = [

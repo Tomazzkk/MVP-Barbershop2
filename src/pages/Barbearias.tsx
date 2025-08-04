@@ -5,9 +5,9 @@ import AnimatedPage from "@/components/AnimatedPage";
 import { BackButton } from "@/components/BackButton";
 
 const barbearias = [
-    { id: 1, nome: "BarberLucas - Centro", endereco: "Rua Principal, 123, Centro" },
-    { id: 2, nome: "BarberLucas - Bairro Sul", endereco: "Avenida Sul, 456, Bairro Sul" },
-    { id: 3, nome: "BarberLucas - Shopping Plaza", endereco: "Shopping Plaza, Loja 15" },
+    { id: 1, nome: "MvpBarber - Centro", endereco: "Rua Principal, 123, Centro" },
+    { id: 2, nome: "MvpBarber - Bairro Sul", endereco: "Avenida Sul, 456, Bairro Sul" },
+    { id: 3, nome: "MvpBarber - Shopping Plaza", endereco: "Shopping Plaza, Loja 15" },
 ];
 
 const Barbearias = () => {
