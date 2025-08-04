@@ -29,23 +29,23 @@ const servicos = [
 ];
 
 const barbeiros = [
-  { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", experiencia: "Sênior", disponibilidade: "Horários abertos hoje", specialty: "Especialista em Cortes Clássicos" },
-  { id: "carlos", nome: "Carlos Souza", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS", experiencia: "Pleno", disponibilidade: "Agenda a partir de amanhã", specialty: "Expert em Barba e Degradê" },
-  { id: "pedro", nome: "Pedro Martins", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM", experiencia: "Júnior", disponibilidade: "Horários abertos hoje", specialty: "Foco em Estilos Modernos" },
+  { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", rating: 5.0, cortes: 127, especialidade: "Fade & Degradê", experienciaAnos: 5 },
+  { id: "carlos", nome: "Carlos Souza", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS", rating: 4.9, cortes: 89, especialidade: "Cortes clássicos", experienciaAnos: 3 },
+  { id: "pedro", nome: "Pedro Martins", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM", rating: 4.7, cortes: 54, especialidade: "Barba & Bigode", experienciaAnos: 2 },
 ];
 
 // Type definitions
-export type Servico = {
-    id: string;
-    nome: string;
-    descricao: string;
-    preco: number;
-    duracao: string;
-    rating: number;
-    reviews: number;
-    icon: React.ElementType;
+export type Servico = (typeof servicos)[0];
+export type Barbeiro = {
+  id: string;
+  nome: string;
+  avatarUrl: string;
+  iniciais: string;
+  rating: number;
+  cortes: number;
+  especialidade: string;
+  experienciaAnos: number;
 };
-export type Barbeiro = (typeof barbeiros)[0];
 
 const pageVariants = {
   initial: { opacity: 0, x: 20 },
@@ -65,7 +65,7 @@ const Agendamento = () => {
   const [servicosSelecionados, setServicosSelecionados] = useState<Servico[]>([]);
   const [barbeiroSelecionado, setBarbeiroSelecionado] = useState<Barbeiro | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState<Date | undefined>(new Date());
-  const [horarioSelecionado, setHorarioSelecionado] = useState<string | null>(null);
+  const [horarioSelecionado, setHorarioSelecionado] = useState<string | null>("14:00");
 
   useEffect(() => {
     const state = location.state as { servicoId?: string; barbeiroId?: string } | null;
@@ -93,14 +93,14 @@ const Agendamento = () => {
 
   const stepTitles = [
     "Serviços",
-    "Profissional e Horário",
+    "Escolha seu barbeiro",
     "Confirmação",
     "Agendamento Concluído"
   ];
 
   const stepDescriptions = [
     "Garanta seu desconto em combos com 2 ou mais serviços.",
-    "Selecione seu profissional, a data e o horário.",
+    "Selecione o profissional que irá cuidar do seu visual",
     "Revise os detalhes e confirme seu horário.",
     "Tudo certo! Seu horário está garantido."
   ];
@@ -124,13 +124,12 @@ const Agendamento = () => {
             barbeiros={barbeiros}
             barbeiroSelecionado={barbeiroSelecionado}
             setBarbeiroSelecionado={setBarbeiroSelecionado}
-            horariosDisponiveis={[]}
+            horariosDisponiveis={["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"]}
             dataSelecionada={dataSelecionada}
             setDataSelecionada={setDataSelecionada}
             horarioSelecionado={horarioSelecionado}
             setHorarioSelecionado={setHorarioSelecionado}
             proximoPasso={proximoPasso}
-            passoAnterior={passoAnterior}
           />
         );
       case 3:
