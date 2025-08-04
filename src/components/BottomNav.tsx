@@ -13,7 +13,7 @@ const navItems = [
 
 export const BottomNav = () => {
   const { pathname } = useLocation();
-  const mainNavPaths = ['/', '/agendamento', '/planos', '/perfil', '/avisos'];
+  const mainNavPaths = ['/', '/planos', '/perfil', '/avisos'];
 
   // Hide if it's an admin path, login, or not a main nav path
   if (pathname.startsWith('/admin') || pathname === '/login' || !mainNavPaths.includes(pathname)) {
