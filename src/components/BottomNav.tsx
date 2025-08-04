@@ -32,39 +32,39 @@ export const BottomNav = () => {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-black border-t border-border z-50">
-      <div className="flex justify-around items-center h-full max-w-md mx-auto">
+    <nav className="fixed bottom-4 inset-x-4 max-w-md mx-auto bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-50 md:bottom-6">
+      <div className="flex justify-around items-center h-16 px-2">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href || (item.href === "/historico" && pathname.startsWith("/agendamento"));
+          const isActive = pathname === item.href;
           
           return (
             <Link
               key={item.href}
               to={item.href}
               className={cn(
-                "relative flex flex-col items-center justify-center gap-1 p-2 flex-1 transition-colors h-full",
-                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                "relative flex flex-col items-center justify-center gap-1 w-full h-full rounded-lg transition-colors z-10",
+                isActive ? "text-primary" : "text-muted-foreground hover:text-primary/90"
               )}
             >
               {isActive && (
                 <motion.div
                   layoutId="active-nav-indicator"
-                  className="absolute top-0 h-1 w-10 bg-primary rounded-b-full"
+                  className="absolute inset-0 bg-primary/20 rounded-lg -z-10"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
               <div className={cn("h-7 w-7 flex items-center justify-center transition-transform", isActive && "scale-110")}>
                 {item.href === "/perfil" ? (
-                  <Avatar className="h-full w-full border-2 border-transparent group-hover:border-primary">
+                  <Avatar className={cn("h-full w-full border-2", isActive ? "border-primary/80" : "border-transparent")}>
                     <AvatarImage src={user.avatarUrl} alt="User avatar" />
                     <AvatarFallback>{user.initials}</AvatarFallback>
                   </Avatar>
                 ) : (
-                  <Icon className="h-full w-full" />
+                  <Icon className="h-6 w-6" />
                 )}
               </div>
               <span className="text-xs font-medium">{item.label}</span>
