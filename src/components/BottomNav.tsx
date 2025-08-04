@@ -32,7 +32,7 @@ export const BottomNav = () => {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-black border-t border-border z-50 md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-black border-t border-border z-50">
       <div className="flex justify-around items-center h-full max-w-md mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
