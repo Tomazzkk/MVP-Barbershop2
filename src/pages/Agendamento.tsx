@@ -7,7 +7,7 @@ import PassoConcluido from "@/components/agendamento/PassoConcluido";
 import { BackButton } from "@/components/BackButton";
 import ServicosSelecionadosBottomNav from "@/components/agendamento/ServicosSelecionadosBottomNav";
 import { motion, AnimatePresence } from "framer-motion";
-import { Scissors, Wind, Droplets, Eye, Smile, Star, SprayCan, Cut, PersonStanding } from "lucide-react";
+import { Scissors, Wind, Droplets, Eye, Smile, Star, SprayCan, PersonStanding } from "lucide-react";
 import React from "react";
 
 // Mock Data
@@ -20,11 +20,11 @@ const servicos = [
     { id: "combo", nome: "Combo Cabelo & Barba", descricao: "Pacote completo para um visual impecável.", preco: 55.00, duracao: "80 min", rating: 5.0, reviews: 210, icon: Star },
     { id: "depilacao-nariz", nome: "Depilação de Nariz", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min", rating: 4.5, reviews: 30, icon: SprayCan },
     { id: "depilacao-orelha", nome: "Depilação de Orelha", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min", rating: 4.5, reviews: 25, icon: SprayCan },
-    { id: "acabamento-barba", nome: "Acabamento de Barba", descricao: "Ajuste e contorno da barba.", preco: 20.00, duracao: "15 min", rating: 4.7, reviews: 50, icon: Cut },
+    { id: "acabamento-barba", nome: "Acabamento de Barba", descricao: "Ajuste e contorno da barba.", preco: 20.00, duracao: "15 min", rating: 4.7, reviews: 50, icon: Scissors },
     { id: "corte-infantil", nome: "Corte Infantil", descricao: "Corte especial para crianças.", preco: 50.00, duracao: "30 min", rating: 4.9, reviews: 40, icon: PersonStanding },
     { id: "freestyle", nome: "Freestyle", descricao: "Desenhos e estilos personalizados no cabelo.", preco: 90.00, duracao: "60 min", rating: 4.8, reviews: 15, icon: Star },
     { id: "hidratacao", nome: "Hidratação", descricao: "Tratamento para revitalizar os fios.", preco: 40.00, duracao: "20 min", rating: 4.7, reviews: 60, icon: Droplets },
-    { id: "acabamento-cabelo", nome: "Acabamento de Cabelo", descricao: "Ajuste e contorno do corte.", preco: 20.00, duracao: "15 min", rating: 4.6, reviews: 70, icon: Cut },
+    { id: "acabamento-cabelo", nome: "Acabamento de Cabelo", descricao: "Ajuste e contorno do corte.", preco: 20.00, duracao: "15 min", rating: 4.6, reviews: 70, icon: Scissors },
     { id: "platinado", nome: "Platinado com Corte", descricao: "Descoloração global para o tom platinado, inclui o corte.", preco: 250.00, duracao: "180 min", rating: 5.0, reviews: 5, icon: Star },
 ];
 
@@ -124,7 +124,7 @@ const Agendamento = () => {
             barbeiros={barbeiros}
             barbeiroSelecionado={barbeiroSelecionado}
             setBarbeiroSelecionado={setBarbeiroSelecionado}
-            horariosDisponiveis={horariosDisponiveis}
+            horariosDisponiveis={[]}
             dataSelecionada={dataSelecionada}
             setDataSelecionada={setDataSelecionada}
             horarioSelecionado={horarioSelecionado}
