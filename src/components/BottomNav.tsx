@@ -44,7 +44,7 @@ export const BottomNav = () => {
               to={item.href}
               className={cn(
                 "relative flex flex-col items-center justify-center gap-1 w-full h-full rounded-xl transition-colors z-10",
-                isActive ? "text-primary" : "text-muted-foreground hover:text-primary/90"
+                isActive ? "text-primary" : "text-muted-foreground"
               )}
             >
               {isActive && (
