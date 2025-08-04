@@ -50,7 +50,7 @@ export const BarberCard = ({ barber }: BarberCardProps) => {
               R$ <span className="font-beatford">{barber.price.toFixed(2).replace('.', ',')}</span>
             </p>
             <Button asChild size="sm" className="font-beatford">
-              <Link to={`/agendamento?barbeiro=${barber.id}`}>Agendar</Link>
+              <Link to="/agendamento" state={{ barbeiroId: barber.id }}>Agendar</Link>
             </Button>
           </div>
         </div>

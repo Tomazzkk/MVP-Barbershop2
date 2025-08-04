@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Servico } from "@/pages/Agendamento";
 import { motion, AnimatePresence } from "framer-motion";
-import { Separator } from "../ui/separator";
 import { NumberTicker } from "../ui/number-ticker";
 
 interface ServicosSelecionadosBottomNavProps {
@@ -11,42 +10,26 @@ interface ServicosSelecionadosBottomNavProps {
 
 const ServicosSelecionadosBottomNav = ({ servicosSelecionados, proximoPasso }: ServicosSelecionadosBottomNavProps) => {
   const totalPreco = servicosSelecionados.reduce((total, servico) => total + servico.preco, 0);
-  const comboDiscount = 0; // Placeholder for combo discount
-  const finalTotal = totalPreco - comboDiscount;
 
   return (
     <AnimatePresence>
       {servicosSelecionados.length > 0 && (
         <motion.div
-          initial={{ y: "120%", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: "120%", opacity: 0 }}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "100%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 inset-x-4 bg-black/80 backdrop-blur-lg border-2 border-primary/50 shadow-2xl shadow-primary/10 rounded-2xl z-[51] overflow-hidden"
+          className="fixed bottom-0 inset-x-0 bg-background border-t border-border z-50"
         >
-          <div className="p-4">
-            <h3 className="font-semibold mb-2 font-beatford">Serviços selecionados</h3>
-            <div className="space-y-1 text-sm">
-              {servicosSelecionados.map(servico => (
-                <div key={servico.id} className="flex justify-between">
-                  <span className="text-muted-foreground">{servico.nome}</span>
-                  <span>R$ {servico.preco.toFixed(2).replace('.', ',')}</span>
-                </div>
-              ))}
+          <div className="container mx-auto p-4 max-w-4xl">
+            <div className="flex justify-between items-center mb-4">
+              <p className="font-semibold">{servicosSelecionados.length} serviço{servicosSelecionados.length > 1 ? 's' : ''} selecionado</p>
+              <p className="font-bold text-lg">
+                R$ <NumberTicker value={totalPreco} />
+              </p>
             </div>
-            <Separator className="my-3" />
-            <div className="space-y-1 text-sm">
-                <div className="flex justify-between">
-                    <span className="text-muted-foreground">Nenhum combo</span>
-                    <span>R$ {comboDiscount.toFixed(2).replace('.', ',')}</span>
-                </div>
-                <div className="flex justify-between font-bold text-base">
-                    <span>Total</span>
-                    <span>R$ <NumberTicker value={finalTotal} /></span>
-                </div>
-            </div>
-            <Button onClick={proximoPasso} className="w-full mt-4 font-beatford" size="lg">
-              Avançar
+            <Button onClick={proximoPasso} className="w-full font-beatford" size="lg">
+              Continuar para Horários
             </Button>
           </div>
         </motion.div>

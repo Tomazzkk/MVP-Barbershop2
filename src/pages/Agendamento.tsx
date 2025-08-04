@@ -7,33 +7,44 @@ import PassoConcluido from "@/components/agendamento/PassoConcluido";
 import { BackButton } from "@/components/BackButton";
 import ServicosSelecionadosBottomNav from "@/components/agendamento/ServicosSelecionadosBottomNav";
 import { motion, AnimatePresence } from "framer-motion";
+import { Scissors, Wind, Droplets, Eye, Smile, Star, SprayCan, Cut, PersonStanding } from "lucide-react";
+import React from "react";
 
 // Mock Data
 const servicos = [
-  { id: "combo", nome: "Combo Cabelo & Barba", descricao: "Pacote completo para um visual impecável.", preco: 120.00, duracao: "80 min" },
-  { id: "sobrancelha", nome: "Sobrancelha", descricao: "Nesse serviço é feita a limpeza da sobrancelha com pinça.", preco: 30.00, duracao: "20 min" },
-  { id: "cabelo", nome: "Cabelo", descricao: "Oferecemos 12 cortes exclusivos, ajustáveis ao seu gosto por barbeiros especializados na escolha do estilo ideal.", preco: 70.00, duracao: "40 min" },
-  { id: "depilacao-nariz", nome: "Depilação de Nariz", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min" },
-  { id: "barba", nome: "Barba", descricao: "Barbear tradicional com lâminas descartáveis, incluindo preparação prévia da pele, uso de toalhas quentes, aplicação de creme ou gel, e cuidados pós-barba.", preco: 60.00, duracao: "40 min" },
-  { id: "depilacao-orelha", nome: "Depilação de Orelha", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min" },
-  { id: "acabamento-barba", nome: "Acabamento de Barba", descricao: "Ajuste e contorno da barba.", preco: 20.00, duracao: "15 min" },
-  { id: "corte-infantil", nome: "Corte Infantil", descricao: "Corte especial para crianças.", preco: 50.00, duracao: "30 min" },
-  { id: "freestyle", nome: "Freestyle", descricao: "Desenhos e estilos personalizados no cabelo.", preco: 90.00, duracao: "60 min" },
-  { id: "hidratacao", nome: "Hidratação", descricao: "Tratamento para revitalizar os fios.", preco: 40.00, duracao: "20 min" },
-  { id: "acabamento-cabelo", nome: "Acabamento de Cabelo", descricao: "Ajuste e contorno do corte.", preco: 20.00, duracao: "15 min" },
-  { id: "platinado", nome: "Platinado com Corte", descricao: "Descoloração global para o tom platinado, inclui o corte.", preco: 250.00, duracao: "180 min" },
+    { id: "cabelo", nome: "Corte Masculino", descricao: "Corte moderno com acabamento profissional", preco: 35.00, duracao: "45 min", rating: 4.9, reviews: 120, icon: Scissors },
+    { id: "barba", nome: "Barba Completa", descricao: "Aparar, desenhar e finalizar com toalha quente", preco: 25.00, duracao: "30 min", rating: 4.8, reviews: 89, icon: Wind },
+    { id: "lavagem", nome: "Lavagem + Hidratação", descricao: "Limpeza profunda com produtos premium", preco: 15.00, duracao: "20 min", rating: 4.7, reviews: 65, icon: Droplets },
+    { id: "sobrancelha", nome: "Sobrancelha", descricao: "Desenho e aparar sobrancelhas masculinas", preco: 12.00, duracao: "15 min", rating: 4.6, reviews: 43, icon: Eye },
+    { id: "relaxamento", nome: "Relaxamento", descricao: "Massagem relaxante no couro cabeludo", preco: 10.00, duracao: "10 min", rating: 4.9, reviews: 78, icon: Smile },
+    { id: "combo", nome: "Combo Cabelo & Barba", descricao: "Pacote completo para um visual impecável.", preco: 55.00, duracao: "80 min", rating: 5.0, reviews: 210, icon: Star },
+    { id: "depilacao-nariz", nome: "Depilação de Nariz", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min", rating: 4.5, reviews: 30, icon: SprayCan },
+    { id: "depilacao-orelha", nome: "Depilação de Orelha", descricao: "Depilação feita com cera.", preco: 25.00, duracao: "10 min", rating: 4.5, reviews: 25, icon: SprayCan },
+    { id: "acabamento-barba", nome: "Acabamento de Barba", descricao: "Ajuste e contorno da barba.", preco: 20.00, duracao: "15 min", rating: 4.7, reviews: 50, icon: Cut },
+    { id: "corte-infantil", nome: "Corte Infantil", descricao: "Corte especial para crianças.", preco: 50.00, duracao: "30 min", rating: 4.9, reviews: 40, icon: PersonStanding },
+    { id: "freestyle", nome: "Freestyle", descricao: "Desenhos e estilos personalizados no cabelo.", preco: 90.00, duracao: "60 min", rating: 4.8, reviews: 15, icon: Star },
+    { id: "hidratacao", nome: "Hidratação", descricao: "Tratamento para revitalizar os fios.", preco: 40.00, duracao: "20 min", rating: 4.7, reviews: 60, icon: Droplets },
+    { id: "acabamento-cabelo", nome: "Acabamento de Cabelo", descricao: "Ajuste e contorno do corte.", preco: 20.00, duracao: "15 min", rating: 4.6, reviews: 70, icon: Cut },
+    { id: "platinado", nome: "Platinado com Corte", descricao: "Descoloração global para o tom platinado, inclui o corte.", preco: 250.00, duracao: "180 min", rating: 5.0, reviews: 5, icon: Star },
 ];
 
 const barbeiros = [
-  { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", experiencia: "Sênior", disponibilidade: "Horários abertos hoje" },
-  { id: "carlos", nome: "Carlos Souza", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS", experiencia: "Pleno", disponibilidade: "Agenda a partir de amanhã" },
-  { id: "pedro", nome: "Pedro Martins", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM", experiencia: "Júnior", disponibilidade: "Horários abertos hoje" },
+  { id: "joao", nome: "João Silva", avatarUrl: "https://i.pravatar.cc/150?u=joao", iniciais: "JS", experiencia: "Sênior", disponibilidade: "Horários abertos hoje", specialty: "Especialista em Cortes Clássicos" },
+  { id: "carlos", nome: "Carlos Souza", avatarUrl: "https://i.pravatar.cc/150?u=carlos", iniciais: "CS", experiencia: "Pleno", disponibilidade: "Agenda a partir de amanhã", specialty: "Expert em Barba e Degradê" },
+  { id: "pedro", nome: "Pedro Martins", avatarUrl: "https://i.pravatar.cc/150?u=pedro", iniciais: "PM", experiencia: "Júnior", disponibilidade: "Horários abertos hoje", specialty: "Foco em Estilos Modernos" },
 ];
 
-const horariosDisponiveis = ["09:00", "09:30", "10:00", "10:30", "11:00", "14:00", "14:30", "15:00", "16:00"];
-
 // Type definitions
-export type Servico = (typeof servicos)[0];
+export type Servico = {
+    id: string;
+    nome: string;
+    descricao: string;
+    preco: number;
+    duracao: string;
+    rating: number;
+    reviews: number;
+    icon: React.ElementType;
+};
 export type Barbeiro = (typeof barbeiros)[0];
 
 const pageVariants = {
@@ -57,15 +68,23 @@ const Agendamento = () => {
   const [horarioSelecionado, setHorarioSelecionado] = useState<string | null>(null);
 
   useEffect(() => {
-    if (location.state?.servicoId) {
-      const servico = servicos.find(s => s.id === location.state.servicoId);
-      if (servico) setServicosSelecionados([servico]);
-      
-      if (location.state.barbeiroId) {
-        const barbeiro = barbeiros.find(b => b.id === location.state.barbeiroId);
+    const state = location.state as { servicoId?: string; barbeiroId?: string } | null;
+
+    // Handle rebooking from history page
+    if (state?.servicoId) {
+        const servico = servicos.find(s => s.id === state.servicoId);
+        if (servico) setServicosSelecionados([servico]);
+        
+        if (state.barbeiroId) {
+            const barbeiro = barbeiros.find(b => b.id === state.barbeiroId);
+            if (barbeiro) setBarbeiroSelecionado(barbeiro);
+            setStep(2); // Pula para a seleção de barbeiro e horário
+        }
+    } 
+    // Handle pre-selecting a barber from another page (like home)
+    else if (state?.barbeiroId) {
+        const barbeiro = barbeiros.find(b => b.id === state.barbeiroId);
         if (barbeiro) setBarbeiroSelecionado(barbeiro);
-      }
-      setStep(2); // Pula para a seleção de barbeiro e horário
     }
   }, [location.state]);
 
@@ -96,6 +115,7 @@ const Agendamento = () => {
             servicos={servicos}
             servicosSelecionados={servicosSelecionados}
             setServicosSelecionados={setServicosSelecionados}
+            barbeiroSelecionado={barbeiroSelecionado}
           />
         );
       case 2:
